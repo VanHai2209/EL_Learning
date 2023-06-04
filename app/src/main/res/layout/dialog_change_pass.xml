@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/gradient_fragment_profile">
+    <TextView
+        android:background="@drawable/gradient_toolbar"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:id="@+id/title_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password" />
+    <ImageView
+        android:layout_marginTop="15dp"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:src="@drawable/change_password" />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Make sure you remember your password"
+        android:textColor="#F2F0ED"/>
+    <EditText
+        android:drawableTint="#03A9F4"
+        android:drawablePadding="20dp"
+        android:padding="5dp"
+        android:drawableStart="@drawable/ic_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Your current password"
+        android:textColorHint="#03A9F4"/>
+    <EditText
+        android:drawableTint="#03A9F4"
+        android:textColorHint="#03A9F4"
+        android:drawablePadding="20dp"
+        android:padding="5dp"
+        android:drawableStart="@drawable/ic_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        android:hint="New password" />
+
+    <EditText
+        android:drawableTint="#03A9F4"
+        android:textColorHint="#03A9F4"
+        android:drawablePadding="20dp"
+        android:padding="5dp"
+        android:drawableStart="@drawable/ic_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Confirm new password" />
+
+    <LinearLayout
+        android:padding="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textColor="@color/white"
+            android:text="Save"
+            android:textSize="10dp"
+            android:backgroundTint="#4CAF50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:textColor="@color/white"
+            android:backgroundTint="#FF0062"
+            android:layout_marginStart="20dp"
+            android:text="Cancel"
+            android:textSize="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

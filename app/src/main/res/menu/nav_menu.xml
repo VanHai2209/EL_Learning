@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+    <group
+        android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/nav_home"/>
+        <item android:id="@+id/nav_search"
+            android:title="Search"
+            android:icon="@drawable/nav_search"/>
+        <item android:id="@+id/nav_program"
+            android:title="Program"
+            android:icon="@drawable/nav_program"/>
+        <item android:id="@+id/nav_topic"
+            android:title="Topic"
+            android:icon="@drawable/nav_topic"/>
+        <item android:id="@+id/nav_myList"
+            android:title="My List"
+            android:icon="@drawable/nav_list"/>
+        <item android:id="@+id/nav_game"
+            android:title="Game"
+            android:icon="@drawable/nav_game"/>
+        <item android:id="@+id/nav_profile"
+            android:title="Profile"
+            android:icon="@drawable/nav_profile"/>
+        <item android:id="@+id/nav_rank"
+            android:title="Rank"
+            android:icon="@drawable/nav_rank"/>
+    </group>
+    <item android:title="">
+        <menu>
+            <item android:id="@+id/nav_log_out"
+                android:title="Log Out"
+                android:icon="@drawable/nav_logout"/>
+        </menu>
+    </item>
+
+</menu>
