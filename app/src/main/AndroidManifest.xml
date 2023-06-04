@@ -57,7 +57,7 @@
         <activity
             android:name=".view.MainActivitySignUp"
             android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".view.MainActivityLogin"
             android:exported="false"

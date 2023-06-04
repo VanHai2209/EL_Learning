@@ -113,6 +113,7 @@
         app:layout_constraintVertical_bias="0.137">
 
         <EditText
+            android:id="@+id/otp1_fg"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="5dp"
@@ -126,6 +127,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/otp2_fg"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="5dp"
@@ -139,6 +141,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/otp3_fg"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="5dp"
@@ -152,6 +155,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/otp4_fg"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="5dp"
@@ -165,6 +169,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/otp5_fg"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="5dp"
@@ -178,6 +183,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/otp6_fg"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="5dp"

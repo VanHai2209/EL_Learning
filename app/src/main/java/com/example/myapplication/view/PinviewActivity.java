@@ -12,7 +12,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.viewModel.VerifyRegisterViewModel;
 
 public class PinviewActivity extends AppCompatActivity {
-    VerifyRegisterViewModel verifySignupViewModel;
+    private VerifyRegisterViewModel verifySignupViewModel;
     AppCompatButton btnVerifySignup;
     EditText otp1, otp2, otp3, otp4, otp5, otp6;
     String otp;

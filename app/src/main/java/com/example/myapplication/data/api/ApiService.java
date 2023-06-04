@@ -1,4 +1,5 @@
 package com.example.myapplication.data.api;
+import com.example.myapplication.model.ApiResponse;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.VerifyRegisterResponse;
@@ -31,4 +32,18 @@ public interface ApiService {
     Call<VerifyRegisterResponse> verifyRegister(
             @Header("Authorization") String token,
             @Field("OTP") String otp);
+    @FormUrlEncoded
+    @POST("api/forgotPassword")
+    Call<ApiResponse> forgotPassword(
+            @Field("email") String email);
+    @FormUrlEncoded
+    @POST("api/verifyforgotPasswordOTP")
+    Call<ApiResponse> otpForgotPassword(
+            @Field("email") String email,
+            @Field("OTP") String otp);
+    @FormUrlEncoded
+    @POST("api/updatePassword")
+    Call<ApiResponse> updatePassword(
+            @Field("email") String email,
+            @Field("password") String password);
 }

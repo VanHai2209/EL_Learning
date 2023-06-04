@@ -19,4 +19,5 @@ public class ApiResponse {
     public void setErrMessage(String errMessage) {
         this.errMessage = errMessage;
     }
+
 }

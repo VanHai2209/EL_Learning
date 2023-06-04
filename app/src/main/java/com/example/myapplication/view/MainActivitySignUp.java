@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.viewModel.RegisterViewModel;
 
 public class MainActivitySignUp extends AppCompatActivity {
-    RegisterViewModel signUpViewModel;
+    private RegisterViewModel signUpViewModel;
     Button btnSignUp;
     EditText txtEmail, txtPassword,txtRePass, txtUsername, txtName, txtAddress, txtPhone;
     String stringGender, stringBirthday;

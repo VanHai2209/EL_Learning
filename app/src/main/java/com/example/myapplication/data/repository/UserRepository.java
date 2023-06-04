@@ -1,8 +1,8 @@
 package com.example.myapplication.data.repository;
-import android.util.Log;
 
 import com.example.myapplication.data.api.ApiService;
 import com.example.myapplication.data.api.ApiServiceClient;
+import com.example.myapplication.model.ApiResponse;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.VerifyRegisterResponse;
@@ -85,7 +85,6 @@ public class UserRepository {
                         iVerifyRegisterResponse.onFail((response.body()));
                     }
                 } else {
-                    // Xử lý khi yêu cầu đăng nhập thất bại
                 }
             }
 
@@ -99,5 +98,81 @@ public class UserRepository {
     public interface IVerifyRegisterResponse{
         void onSuccess(VerifyRegisterResponse verifyRegisterResponse);
         void onFail(VerifyRegisterResponse verifyRegisterResponse);
+    }
+    public void forgotPassword(String email,IApiResponse iApiResponse ){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.forgotPassword(email);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    if(response.body().getErrCode() == 0 ) {
+                        iApiResponse.onSuccess(response.body());
+                    }
+                    else {
+                        iApiResponse.onFail((response.body()));
+                    }
+                } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+    public void otpForgotPassword(String email,String otp,IApiResponse iApiResponse ){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.otpForgotPassword(email, otp);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    if(response.body().getErrCode() == 0 ) {
+                        iApiResponse.onSuccess(response.body());
+                    }
+                    else {
+                        iApiResponse.onFail((response.body()));
+                    }
+                } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+    public void updatePassword(String email,String password,IApiResponse iApiResponse ){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.updatePassword(email, password);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    if(response.body().getErrCode() == 0 ) {
+                        iApiResponse.onSuccess(response.body());
+                    }
+                    else {
+                        iApiResponse.onFail((response.body()));
+                    }
+                } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+    public interface IApiResponse{
+        void onSuccess(ApiResponse apiResponse);
+        void onFail(ApiResponse apiResponse);
     }
 }

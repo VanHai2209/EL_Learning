@@ -101,7 +101,7 @@
 
     <EditText
         android:gravity="center"
-        android:id="@+id/editText"
+        android:id="@+id/txtEmail_fg"
         android:background="@drawable/edittext_background"
         android:hint="Example@gmail.com"
         android:inputType="textPersonName"
@@ -124,7 +124,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail_fg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

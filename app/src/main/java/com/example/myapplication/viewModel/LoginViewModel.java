@@ -10,6 +10,7 @@ import com.example.myapplication.MainActivityHome;
 import com.example.myapplication.data.repository.UserRepository;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.view.MainActivityForgetPass1;
+import com.example.myapplication.view.MainActivityLogin;
 
 public class LoginViewModel extends ViewModel {
     private Context context;
@@ -23,6 +24,7 @@ public class LoginViewModel extends ViewModel {
             @Override
             public void onSuccess(LoginResponse loginResponse) {
                 context.startActivity(new Intent(context, MainActivityHome.class));
+//                ((MainActivityLogin) context).finish();
             }
 
             @Override
