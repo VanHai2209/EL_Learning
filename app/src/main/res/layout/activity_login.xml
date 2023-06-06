@@ -85,15 +85,25 @@
             android:inputType="textPassword"
             android:padding="10dp"
             android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/txtForgetPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+        <LinearLayout
             android:padding="10dp"
-            android:text="Forget Password ?"
-            android:textColor="#D31A1A" />
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtForgetPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forget Password ?"
+                android:textColor="#D31A1A" />
+            <TextView
+                android:layout_marginStart="32dp"
+                android:id="@+id/txtSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You dont have account ?"
+                android:textColor="#4CAF50" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -168,7 +178,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="32dp"
             android:id="@+id/btnLogin"
             android:layout_width="250dp"
             android:layout_height="50dp"

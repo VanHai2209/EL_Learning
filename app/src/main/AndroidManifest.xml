@@ -12,35 +12,38 @@
         android:label="EL Learning"
         android:roundIcon="@mipmap/logo_app_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".GameMiniTestStart"
+            android:name=".view.testInfor"
             android:exported="false" />
         <activity
-            android:name=".GameSovleitout"
+            android:name=".view.GameMiniTestStart"
             android:exported="false" />
         <activity
-            android:name=".GameSelectWord"
+            android:name=".view.GameSovleitout"
             android:exported="false" />
         <activity
-            android:name=".GameCompleteWord"
+            android:name=".view.GameSelectWord"
             android:exported="false" />
         <activity
-            android:name=".GameArrangeWord"
+            android:name=".view.GameCompleteWord"
             android:exported="false" />
         <activity
-            android:name=".GameMiniTest"
+            android:name=".view.GameArrangeWord"
             android:exported="false" />
         <activity
-            android:name=".GameVocabulary"
+            android:name=".view.GameMiniTest"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity2"
+            android:name=".view.GameVocabulary"
             android:exported="false" />
         <activity
-            android:name=".MainActivityHome"
+            android:name=".view.SearchActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainActivityHome"
             android:exported="false" />
         <activity
             android:name=".view.MainActivityForgetPass3"

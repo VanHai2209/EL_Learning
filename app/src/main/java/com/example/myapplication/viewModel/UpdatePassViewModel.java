@@ -20,6 +20,17 @@ public class UpdatePassViewModel extends ViewModel {
         this.context = context;
         userRepository = new UserRepository();
     }
+    public boolean checkConfirmPass(String updatePass,String updatePassConfirm){
+       if(updatePass !=null && updatePassConfirm!=null){
+           if(updatePass.equals(updatePassConfirm)){
+               return true;
+           }
+           else{
+               return false;
+           }
+       }
+       else return false;
+    }
     public void updatePass(String password){
         userRepository.updatePassword(email, password, new UserRepository.IApiResponse() {
             @Override

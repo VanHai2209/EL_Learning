@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.apdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
-import java.util.ArrayList;
+import com.example.myapplication.R;
+
 import java.util.Arrays;
 import java.util.List;
 

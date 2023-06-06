@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.myapplication.data.repository.UserRepository;
 import com.example.myapplication.view.MainActivityLogin;
 import com.example.myapplication.view.MainActivitySignUp;
+import com.example.myapplication.view.testInfor;
 
 public class MainActivityViewModel extends ViewModel {
     private Context context;

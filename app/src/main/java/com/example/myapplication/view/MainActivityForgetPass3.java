@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.viewModel.UpdatePassViewModel;
@@ -26,7 +27,12 @@ public class MainActivityForgetPass3 extends AppCompatActivity {
         btnConfrimPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePassViewModel.updatePass(updatePass.getText().toString());
+                if(updatePassViewModel.checkConfirmPass(updatePass.getText().toString(), confirmUpdatePass.getText().toString())){
+                    updatePassViewModel.updatePass(updatePass.getText().toString());
+                }
+                else{
+                    Toast.makeText(MainActivityForgetPass3.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

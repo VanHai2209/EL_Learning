@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.apdapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+
+import com.example.myapplication.ItemRank;
+import com.example.myapplication.R;
 
 import java.util.ArrayList;
 

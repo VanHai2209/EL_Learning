@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.view.fragment;
 
 import android.os.Bundle;
 
@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-public class ProgramFragment extends Fragment {
+
+import com.example.myapplication.R;
+
+public class GrammarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

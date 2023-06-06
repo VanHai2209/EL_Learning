@@ -1,5 +1,6 @@
 package com.example.myapplication.data.api;
 import com.example.myapplication.model.ApiResponse;
+import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.VerifyRegisterResponse;
@@ -7,8 +8,11 @@ import com.example.myapplication.model.VerifyRegisterResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
+
 public interface ApiService {
     @FormUrlEncoded
     @POST("api/login")
@@ -46,4 +50,7 @@ public interface ApiService {
     Call<ApiResponse> updatePassword(
             @Field("email") String email,
             @Field("password") String password);
+    @GET("api/InfoUser")
+    Call<GetInforResponse> getInforUser(
+            @Query("email") String email);
 }

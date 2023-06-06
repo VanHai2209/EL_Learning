@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.view.fragment;
 
 import android.graphics.ImageDecoder;
 import android.media.MediaPlayer;
@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.VideoView;
 
+import com.example.myapplication.R;
+import com.example.myapplication.SlideAdapter;
+import com.example.myapplication.SlideItem;
 import com.example.myapplication.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -53,20 +56,6 @@ public class HomeFragment extends Fragment {
                 slideHandler.postDelayed(slideRunnable, 9000);
             }
         });
-//        viewPager2.setClipToPadding(false);
-//        viewPager2.setClipChildren(false);
-//        viewPager2.setOffscreenPageLimit(5);
-//        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-//
-//        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
-//        compositePageTransformer.addTransformer(new MarginPageTransformer(30));
-//        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
-//            @Override
-//            public void transformPage(@NonNull View page, float position) {
-//
-//            }
-//        });
-//        viewPager2.setPageTransformer(compositePageTransformer);
 
         videoViewUsers = view.findViewById(R.id.video_view_users);
         videoViewTopics = view.findViewById(R.id.video_view_topics);

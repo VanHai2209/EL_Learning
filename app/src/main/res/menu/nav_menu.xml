@@ -11,7 +11,7 @@
             android:title="Search"
             android:icon="@drawable/nav_search"/>
         <item android:id="@+id/nav_program"
-            android:title="Program"
+            android:title="Grammar"
             android:icon="@drawable/nav_program"/>
         <item android:id="@+id/nav_topic"
             android:title="Topic"

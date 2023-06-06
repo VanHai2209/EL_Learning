@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class SlideItem {
     private  int image;
-    SlideItem(int image){
+    public SlideItem(int image){
         this.image = image;
     }
 

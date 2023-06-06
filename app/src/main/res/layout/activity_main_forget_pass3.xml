@@ -75,20 +75,24 @@
             android:textStyle="italic"
             android:textColor="@color/white"
             android:textSize="18sp"/>
+
         <EditText
-            android:layout_gravity="center"
             android:id="@+id/updatePass"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_marginTop="100dp"
-            android:hint="New Password"
-            android:background="@drawable/edittext_background"/>
+            android:background="@drawable/edittext_background"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:hint="New Password" />
+
         <EditText
             android:layout_gravity="center"
             android:id="@+id/updatePassConfirm"
             android:gravity="center"
             android:hint="Confirm new password"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"

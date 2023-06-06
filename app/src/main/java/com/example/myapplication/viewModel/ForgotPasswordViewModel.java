@@ -25,6 +25,7 @@ public class ForgotPasswordViewModel extends ViewModel {
             @Override
             public void onSuccess(ApiResponse forgotPasswordResponse) {
                 context.startActivity(new Intent(context, MainActivityForgetPass2.class));
+                MainActivityForgetPass2.email = email;
                 ((MainActivityForgetPass1) context).finish();
             }
 

@@ -33,6 +33,22 @@ public class RegisterViewModel extends ViewModel {
             }
         });
     }
+    public boolean checkField(String email, String pass, String repass, String username, String name, String address, String phone, String gender){
+        if(email !=null && pass != null && repass != null && username!=null&& name != null && address != null&& phone != null && gender != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean checkConfirmPass(String updatePass,String updatePassConfirm){
+        if(updatePass.equals(updatePassConfirm)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public String checkRadio(int checkedId) {
         String stringGender ="-1";
         if (checkedId == -1) {

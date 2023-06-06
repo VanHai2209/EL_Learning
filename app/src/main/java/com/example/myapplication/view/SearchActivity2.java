@@ -1,14 +1,13 @@
-package com.example.myapplication;
+package com.example.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.RadioGroup;
 
-import java.util.ArrayList;
+import com.example.myapplication.R;
+import com.example.myapplication.apdapter.AdapterPagerSearch;
 
 public class SearchActivity2 extends AppCompatActivity {
     ViewPager2 viewPager2;

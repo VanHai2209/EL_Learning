@@ -1,8 +1,11 @@
 package com.example.myapplication.data.repository;
 
+import android.util.Log;
+
 import com.example.myapplication.data.api.ApiService;
 import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.model.ApiResponse;
+import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.VerifyRegisterResponse;
@@ -11,6 +14,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 public class UserRepository {
+    public void getInfor(String email, IGetInforResponse iGetInforResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<GetInforResponse> call = apiService.getInforUser(email);
+        call.enqueue(new Callback<GetInforResponse>() {
+            @Override
+            public void onResponse(Call<GetInforResponse> call, Response<GetInforResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getErrCode() == 0){
+                        iGetInforResponse.onSuccess(response.body());
+                    }
+                    else {
+                        iGetInforResponse.onFail(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetInforResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetInforResponse {
+        void onSuccess(GetInforResponse getInforResponse);
+        void onFail(GetInforResponse getInforResponse);
+    }
     public void login(String username, String password, ILoginResponse loginResponse) {
         ApiService apiService = ApiServiceClient.getApiService();
         Call<LoginResponse> call = apiService.login(username, password);

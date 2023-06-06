@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.view.fragment;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.VideoView;
+
+import com.example.myapplication.ItemRank;
+import com.example.myapplication.R;
+import com.example.myapplication.apdapter.AdapterRank;
 
 import java.util.ArrayList;
 

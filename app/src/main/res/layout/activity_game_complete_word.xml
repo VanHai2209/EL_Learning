@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameCompleteWord"
+    tools:context=".view.GameCompleteWord"
     android:background="@drawable/bgr_game_complete">
     <LinearLayout
         android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.viewModel.RegisterViewModel;
@@ -45,8 +46,19 @@ public class MainActivitySignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stringBirthday = birthday.getDayOfMonth()+"-"+birthday.getMonth()+"-"+birthday.getYear();
-                signUpViewModel.register(txtEmail.getText().toString(),txtPassword.getText().toString(),txtUsername.getText().toString(),txtName.getText().toString(),txtAddress.getText().toString(),txtPhone.getText().toString(),stringGender, stringBirthday);
+                if(signUpViewModel.checkField(txtEmail.getText().toString(),txtPassword.getText().toString(),txtRePass.getText().toString(),txtUsername.getText().toString(),txtName.getText().toString(),txtAddress.getText().toString(),txtPhone.getText().toString(),stringGender)){
+                    if(signUpViewModel.checkConfirmPass(txtPassword.getText().toString(),txtRePass.getText().toString())){
+                        stringBirthday = birthday.getDayOfMonth()+"-"+birthday.getMonth()+"-"+birthday.getYear();
+                        signUpViewModel.register(txtEmail.getText().toString(),txtPassword.getText().toString(),txtUsername.getText().toString(),txtName.getText().toString(),txtAddress.getText().toString(),txtPhone.getText().toString(),stringGender, stringBirthday);
+                    }
+                    else {
+                        Toast.makeText(MainActivitySignUp.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivitySignUp.this, "Fields must not be left blank", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

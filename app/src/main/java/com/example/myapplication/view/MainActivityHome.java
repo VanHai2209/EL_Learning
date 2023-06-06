@@ -1,7 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.view;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -14,6 +13,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
+import com.example.myapplication.view.fragment.GameFragment;
+import com.example.myapplication.view.fragment.HomeFragment;
+import com.example.myapplication.view.fragment.ProfileFragment;
+import com.example.myapplication.view.fragment.GrammarFragment;
+import com.example.myapplication.R;
+import com.example.myapplication.view.fragment.RankFragment;
+import com.example.myapplication.view.fragment.SearchFragment;
+import com.example.myapplication.view.fragment.TopicFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivityHome extends AppCompatActivity  {
@@ -59,8 +66,8 @@ public class MainActivityHome extends AppCompatActivity  {
                 else if (itemId == R.id.nav_program){
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    ProgramFragment programFragment = new ProgramFragment();
-                    fragmentTransaction.replace(R.id.fragment_container, programFragment);
+                    GrammarFragment grammarFragment = new GrammarFragment();
+                    fragmentTransaction.replace(R.id.fragment_container, grammarFragment);
                     fragmentTransaction.commit();
                     home_toolbar.setTitle("Program");
                 }

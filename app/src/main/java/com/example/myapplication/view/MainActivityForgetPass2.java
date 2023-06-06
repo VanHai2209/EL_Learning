@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.viewModel.OtpForgotPassViewModel;
@@ -15,10 +16,14 @@ public class MainActivityForgetPass2 extends AppCompatActivity {
     private OtpForgotPassViewModel otpForgotPassViewModel;
     AppCompatButton btnConfirmCode;
     EditText otp1, otp2, otp3, otp4, otp5, otp6;
+    TextView txtMail;
+    public static String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_forget_pass2);
+        txtMail = findViewById(R.id.textView7);
+        txtMail.setText("Verification code sent to "+email);
         otpForgotPassViewModel = new OtpForgotPassViewModel(this);
         btnConfirmCode = findViewById(R.id.btnConfirmCode);
         otp1 = findViewById(R.id.otp1_fg);

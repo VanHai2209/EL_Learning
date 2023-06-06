@@ -1,14 +1,16 @@
-package com.example.myapplication;
+package com.example.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GameCompleteWord extends AppCompatActivity {
+import com.example.myapplication.R;
+
+public class GameSovleitout extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_complete_word);
+        setContentView(R.layout.activity_game_sovleitout);
     }
 }
