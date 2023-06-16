@@ -14,7 +14,6 @@ import com.example.myapplication.view.PinviewActivity;
 
 public class VerifyRegisterViewModel extends ViewModel {
     private UserRepository userRepository;
-    public static String token;
     public Context context;
 
     public VerifyRegisterViewModel(Context context){
@@ -22,7 +21,7 @@ public class VerifyRegisterViewModel extends ViewModel {
         userRepository = new UserRepository();
     }
     public void verifyRegister(String otp){
-        userRepository.verifyRegister(token, otp, new UserRepository.IVerifyRegisterResponse() {
+        userRepository.verifyRegister(otp, new UserRepository.IVerifyRegisterResponse() {
             @Override
             public void onSuccess(VerifyRegisterResponse verifyRegisterResponse) {
                 Toast.makeText(context,verifyRegisterResponse.getErrorMessage(), Toast.LENGTH_SHORT).show();

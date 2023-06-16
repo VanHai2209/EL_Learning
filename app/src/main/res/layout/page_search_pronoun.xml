@@ -2,13 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/white">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="/Hé Lâu"/>
-    <TextView
-        android:layout_width="wrap_content"
+        android:text="IPA"
+        android:textColor="#E91E63"/>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phát âm"/>
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="16sp"
+            android:id="@+id/txtIPA"
+            android:textStyle="italic"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="null"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAudio"
+            android:layout_marginStart="80dp"
+            android:layout_width="45sp"
+            android:layout_height="45sp"
+            android:background="@drawable/speaker"/>
+    </LinearLayout>
+
+
 </LinearLayout>

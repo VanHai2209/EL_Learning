@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.myapplication.ItemRank;
+import com.example.myapplication.model.ItemRank;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

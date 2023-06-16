@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.view.PinviewActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.data.repository.UserRepository;
@@ -25,7 +26,7 @@ public class RegisterViewModel extends ViewModel {
             public void onSuccess(RegisterResponse registerResponse){
                 context.startActivity(new Intent(context, PinviewActivity.class));
                 Toast.makeText(context,"We sent otp to "+email, Toast.LENGTH_LONG).show();
-                VerifyRegisterViewModel.token = registerResponse.getUserData().getToken();
+                ApiServiceClient.setToken(registerResponse.getUserData().getToken());
             }
             @Override
             public void onFail(RegisterResponse registerResponse){

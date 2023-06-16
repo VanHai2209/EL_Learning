@@ -6,14 +6,141 @@ import com.example.myapplication.data.api.ApiService;
 import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.model.ApiResponse;
 import com.example.myapplication.model.GetInforResponse;
+import com.example.myapplication.model.Grammar;
+import com.example.myapplication.model.GrammarResponse;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RegisterResponse;
+import com.example.myapplication.model.SearchWordResponse;
+import com.example.myapplication.model.TopicResponse;
 import com.example.myapplication.model.VerifyRegisterResponse;
 
+import java.util.List;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 public class UserRepository {
+    public void getListTopic(IGetListTopic iGetListTopic){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<TopicResponse> call = apiService.listTopic();
+        call.enqueue(new Callback<TopicResponse>() {
+            @Override
+            public void onResponse(Call<TopicResponse> call, Response<TopicResponse> response) {
+                iGetListTopic.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<TopicResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetListTopic{
+        public void onSuccess(TopicResponse topicResponse);
+    }
+    public void getAudio(String audioName, IGetImage iGetImage){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ResponseBody> call = apiService.getAudio(audioName);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                iGetImage.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+    public void getImage(String imageName, IGetImage iGetImage){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ResponseBody> call = apiService.getImage(imageName);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                iGetImage.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetImage{
+        public void onSuccess(ResponseBody responseBody);
+    }
+    public void getOnlyGrammar(String grammar, IGetOnlyGrammar iGetOnlyGrammar){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<GrammarResponse> call = apiService.onlyGrammar(grammar);
+        call.enqueue(new Callback<GrammarResponse>() {
+            @Override
+            public void onResponse(Call<GrammarResponse> call, Response<GrammarResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getErrCode()==0){
+                        iGetOnlyGrammar.onSuccess(response.body());
+                    }
+                    else iGetOnlyGrammar.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GrammarResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetOnlyGrammar{
+        public void onSuccess(GrammarResponse grammarResponse);
+        public void onFail(GrammarResponse grammarResponse);
+    }
+    public void getGrammar(IGetGrammar iGetGrammar){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<List<Grammar>> call = apiService.listGrammar();
+        call.enqueue(new Callback<List<Grammar>>() {
+            @Override
+            public void onResponse(Call<List<Grammar>> call, Response<List<Grammar>> response) {
+                iGetGrammar.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Grammar>> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetGrammar{
+        public void onSuccess(List<Grammar> listGrammar);
+
+    }
+    public void searchWord(ISearchWordResponse iSearchWordResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<SearchWordResponse> call = apiService.searchWord();
+        call.enqueue(new Callback<SearchWordResponse>() {
+            @Override
+            public void onResponse(Call<SearchWordResponse> call, Response<SearchWordResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getErrCode() == 0){
+                        iSearchWordResponse.onSuccess(response.body());
+                    }
+                    else{
+                        iSearchWordResponse.onFail(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchWordResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface ISearchWordResponse{
+        void onSuccess(SearchWordResponse searchWordResponse);
+        void onFail(SearchWordResponse searchWordResponse);
+    }
     public void getInfor(String email, IGetInforResponse iGetInforResponse){
         ApiService apiService = ApiServiceClient.getApiService();
         Call<GetInforResponse> call = apiService.getInforUser(email);
@@ -32,7 +159,6 @@ public class UserRepository {
 
             @Override
             public void onFailure(Call<GetInforResponse> call, Throwable t) {
-
             }
         });
     }
@@ -99,10 +225,9 @@ public class UserRepository {
         void onSuccess(RegisterResponse registerResponse);
         void onFail(RegisterResponse registerResponse);
     }
-    public void verifyRegister(String token, String otp,IVerifyRegisterResponse iVerifyRegisterResponse ){
+    public void verifyRegister(String otp,IVerifyRegisterResponse iVerifyRegisterResponse ){
         ApiService apiService = ApiServiceClient.getApiService();
-        String bearerToken = "Bearer "+token;
-        Call<VerifyRegisterResponse> call = apiService.verifyRegister(bearerToken, otp);
+        Call<VerifyRegisterResponse> call = apiService.verifyRegister(otp);
         call.enqueue(new Callback<VerifyRegisterResponse>() {
             @Override
             public void onResponse(Call<VerifyRegisterResponse> call, Response<VerifyRegisterResponse> response) {

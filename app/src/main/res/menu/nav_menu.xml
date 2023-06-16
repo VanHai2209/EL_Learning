@@ -10,7 +10,7 @@
         <item android:id="@+id/nav_search"
             android:title="Search"
             android:icon="@drawable/nav_search"/>
-        <item android:id="@+id/nav_program"
+        <item android:id="@+id/nav_grammar"
             android:title="Grammar"
             android:icon="@drawable/nav_program"/>
         <item android:id="@+id/nav_topic"

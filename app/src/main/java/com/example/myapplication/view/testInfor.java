@@ -21,12 +21,12 @@ public class testInfor extends AppCompatActivity {
         setContentView(R.layout.activity_test_infor);
         sharedPreferences = getSharedPreferences("EL_Learning",MODE_PRIVATE);
         token = sharedPreferences.getString("Token_Login", null);
-//        ApiServiceClient.setToken(token);
+        email = sharedPreferences.getString("Email", null);
+        ApiServiceClient.setToken(token);
         userRepository = new UserRepository();
-        userRepository.getInfor("vanhai",new UserRepository.IGetInforResponse() {
+        userRepository.getInfor(email,new UserRepository.IGetInforResponse() {
             @Override
             public void onSuccess(GetInforResponse getInforResponse) {
-                Log.d("vanHai", "onSuccess: "+ getInforResponse.getDataUser().getName());
             }
 
             @Override

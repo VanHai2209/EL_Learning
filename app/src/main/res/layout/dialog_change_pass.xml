@@ -3,10 +3,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="@drawable/gradient_fragment_profile">
+    android:padding="35dp"
+    android:backgroundTint="@color/black"
+    android:background="@drawable/button_blue_border">
     <TextView
-        android:background="@drawable/gradient_toolbar"
+        android:textColor="@color/white"
+        android:backgroundTint="#3A3737"
+        android:background="@drawable/button_blue_border"
         android:gravity="center"
         android:textSize="24sp"
         android:id="@+id/title_textview"
@@ -27,6 +30,7 @@
         android:text="Make sure you remember your password"
         android:textColor="#F2F0ED"/>
     <EditText
+        android:inputType="textPassword"
         android:drawableTint="#03A9F4"
         android:drawablePadding="20dp"
         android:padding="5dp"
@@ -38,6 +42,7 @@
         android:hint="Your current password"
         android:textColorHint="#03A9F4"/>
     <EditText
+        android:inputType="textPassword"
         android:drawableTint="#03A9F4"
         android:textColorHint="#03A9F4"
         android:drawablePadding="20dp"
@@ -50,6 +55,7 @@
         android:hint="New password" />
 
     <EditText
+        android:inputType="textPassword"
         android:drawableTint="#03A9F4"
         android:textColorHint="#03A9F4"
         android:drawablePadding="20dp"
@@ -68,15 +74,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/btnSave"
             android:textColor="@color/white"
             android:text="Save"
             android:textSize="10dp"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#3F413F"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/btnCancel"
             android:textColor="@color/white"
-            android:backgroundTint="#FF0062"
+            android:backgroundTint="#9F2151"
             android:layout_marginStart="20dp"
             android:text="Cancel"
             android:textSize="10dp"

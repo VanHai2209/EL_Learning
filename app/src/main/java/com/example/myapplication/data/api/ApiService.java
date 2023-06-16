@@ -1,16 +1,24 @@
 package com.example.myapplication.data.api;
 import com.example.myapplication.model.ApiResponse;
 import com.example.myapplication.model.GetInforResponse;
+import com.example.myapplication.model.Grammar;
+import com.example.myapplication.model.GrammarResponse;
 import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RegisterResponse;
+import com.example.myapplication.model.SearchWordResponse;
+import com.example.myapplication.model.TopicResponse;
 import com.example.myapplication.model.VerifyRegisterResponse;
 
+import java.util.List;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -34,7 +42,6 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("api/verifyRegister")
     Call<VerifyRegisterResponse> verifyRegister(
-            @Header("Authorization") String token,
             @Field("OTP") String otp);
     @FormUrlEncoded
     @POST("api/forgotPassword")
@@ -53,4 +60,17 @@ public interface ApiService {
     @GET("api/InfoUser")
     Call<GetInforResponse> getInforUser(
             @Query("email") String email);
+    @GET("api/searchWord")
+    Call<SearchWordResponse> searchWord();
+    @GET("api/grammar")
+    Call<List<Grammar>> listGrammar();
+    @GET("api/grammar")
+    Call<GrammarResponse> onlyGrammar(
+            @Query("grammar") String grammar);
+    @GET("images/{imageName}")
+    Call<ResponseBody> getImage(@Path("imageName") String imageName);
+    @GET("{audioName}")
+    Call<ResponseBody> getAudio(@Path("audioName") String audioName);
+    @GET("api/list-topic")
+    Call<TopicResponse> listTopic();
 }

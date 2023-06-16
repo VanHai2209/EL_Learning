@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.VideoView;
 
-import com.example.myapplication.ItemRank;
+import com.example.myapplication.model.ItemRank;
 import com.example.myapplication.R;
 import com.example.myapplication.apdapter.AdapterRank;
 

@@ -3,10 +3,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="@drawable/gradient_fragment_profile">
+    android:padding="35dp"
+    android:backgroundTint="@color/black"
+    android:background="@drawable/button_blue_border">
     <TextView
-        android:background="@drawable/gradient_toolbar"
+        android:textColor="@color/white"
+        android:elevation="50dp"
+        android:backgroundTint="#3A3737"
+        android:background="@drawable/button_blue_border"
         android:gravity="center"
         android:textSize="24sp"
         android:id="@+id/title_textview"
@@ -26,10 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textColor="@color/white"
             android:text="Name"
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/txtName"
+            android:textColor="@color/white"
             android:text="Vu Hoai Anh"
             android:layout_width="180dp"
             android:layout_height="wrap_content"/>
@@ -39,19 +46,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textColor="@color/white"
+            android:text="UserName"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/txtUserName"
+            android:textColor="@color/white"
+            android:text="Hoaianh"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/white"
             android:layout_gravity="center"
             android:text="Gender"
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"/>
         <RadioGroup
+            android:id="@+id/group_gender"
+            android:textColor="@color/white"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RadioButton
+                android:id="@+id/radio_male"
+                android:textColor="@color/white"
                 android:text="Male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/radio_female"
+                android:textColor="@color/white"
                 android:layout_marginStart="16dp"
                 android:text="FeMale"
                 android:layout_width="wrap_content"
@@ -63,10 +93,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textColor="@color/white"
             android:text="Birthday"
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/txtBirthday"
+            android:textColor="@color/white"
             android:text="01/01/2001"
             android:layout_width="180dp"
             android:layout_height="wrap_content"/>
@@ -76,14 +109,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textColor="@color/white"
             android:text="Address"
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/txtAddress"
+            android:textColor="@color/white"
             android:text="Tan trieu, Thanh tri, Ha noi"
             android:layout_width="180dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/white"
+            android:text="Phone"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/txtPhone"
+            android:textColor="@color/white"
+            android:text="0985640256"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <LinearLayout
         android:padding="10dp"
         android:gravity="center"
@@ -91,15 +144,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/btnSave"
             android:textColor="@color/white"
             android:text="Save"
             android:textSize="10dp"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#3F4540"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/btnCancel"
             android:textColor="@color/white"
-            android:backgroundTint="#FF0062"
+            android:backgroundTint="#690C2B"
             android:layout_marginStart="20dp"
             android:text="Cancel"
             android:textSize="10dp"

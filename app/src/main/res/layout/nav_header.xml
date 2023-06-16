@@ -10,12 +10,14 @@
         android:layout_height="50dp"
         android:src="@mipmap/ic_user"/>
     <TextView
+        android:id="@+id/txtUserName"
         android:gravity="center"
         android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="My Name"/>
     <TextView
+        android:id="@+id/txtEmail"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,12 +7,22 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.myapplication.dialog.DialogLogout;
+import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.view.fragment.GameFragment;
 import com.example.myapplication.view.fragment.HomeFragment;
 import com.example.myapplication.view.fragment.ProfileFragment;
@@ -21,13 +31,18 @@ import com.example.myapplication.R;
 import com.example.myapplication.view.fragment.RankFragment;
 import com.example.myapplication.view.fragment.SearchFragment;
 import com.example.myapplication.view.fragment.TopicFragment;
+import com.example.myapplication.viewModel.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivityHome extends AppCompatActivity  {
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar home_toolbar;
+    TextView txtUsername, txtEmail;
+    HomeViewModel homeViewModel;
+    String email, token_login;
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +54,26 @@ public class MainActivityHome extends AppCompatActivity  {
         fragmentTransaction.commit();
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
+        txtUsername = header.findViewById(R.id.txtUserName);
+        txtEmail = header.findViewById(R.id.txtEmail);
         home_toolbar = findViewById(R.id.home_toolbar);
         home_toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.ic_menu){
+                    sharedPreferences = getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
+                    token_login = sharedPreferences.getString("Token_Login",null);
+                    email = sharedPreferences.getString("Email", null);
+                    homeViewModel = new ViewModelProvider(MainActivityHome.this).get(HomeViewModel.class);
+                    homeViewModel.getInforUser(email, token_login);
+                    homeViewModel.getData().observe(MainActivityHome.this, new Observer<GetInforResponse>() {
+                        @Override
+                        public void onChanged(GetInforResponse getInforResponse) {
+                            txtUsername.setText(getInforResponse.getDataUser().getUsername());
+                            txtEmail.setText(getInforResponse.getDataUser().getEmail());
+                        }
+                    });
                     drawerLayout.openDrawer(navigationView);
                     return true;
                 }
@@ -63,13 +93,13 @@ public class MainActivityHome extends AppCompatActivity  {
                     fragmentTransaction.commit();
                     home_toolbar.setTitle("EL Learning");
                 }
-                else if (itemId == R.id.nav_program){
+                else if (itemId == R.id.nav_grammar){
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     GrammarFragment grammarFragment = new GrammarFragment();
                     fragmentTransaction.replace(R.id.fragment_container, grammarFragment);
                     fragmentTransaction.commit();
-                    home_toolbar.setTitle("Program");
+                    home_toolbar.setTitle("Grammar");
                 }
                 else if (itemId == R.id.nav_search){
                     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -89,9 +119,9 @@ public class MainActivityHome extends AppCompatActivity  {
                 }
                 else if (itemId == R.id.nav_profile) {
                     home_toolbar.setTitle("Profile");
+                    ProfileFragment profileFragment = new ProfileFragment();
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    ProfileFragment profileFragment = new ProfileFragment();
                     fragmentTransaction.replace(R.id.fragment_container, profileFragment);
                     fragmentTransaction.commit();
                 }
@@ -120,7 +150,22 @@ public class MainActivityHome extends AppCompatActivity  {
                     fragmentTransaction.commit();
                 }
                 else{
-                    Toast.makeText(MainActivityHome.this, "Log Out !", Toast.LENGTH_SHORT).show();
+                    DialogLogout dialogLogout = new DialogLogout(MainActivityHome.this, new DialogLogout.DialogCallback() {
+                        @Override
+                        public void onCancelClicked() {
+
+                        }
+
+                        @Override
+                        public void onLogoutClicked() {
+                            startActivity(new Intent(MainActivityHome.this, MainActivityLogin.class));
+                            finish();
+                            Toast.makeText(MainActivityHome.this, "Log Out !", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    dialogLogout.setCanceledOnTouchOutside(false);
+                    dialogLogout.show();
+
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

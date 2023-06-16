@@ -21,8 +21,6 @@ public class ApiServiceClient {
 
     public static ApiService getApiService() {
         if (apiService == null) {
-
-            if(token != null){
                 OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
@@ -34,20 +32,11 @@ public class ApiServiceClient {
                 }).build();
                 Retrofit retrofit = new Retrofit.Builder()
                         .client(client)
-                        .baseUrl("http://192.168.21.109:8080/")
+                        .baseUrl("http://192.168.21.104:8080/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
                 apiService = retrofit.create(ApiService.class);
-            }
-            else {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.21.109:8080/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-                apiService = retrofit.create(ApiService.class);
-            }
         }
         return apiService;
     }

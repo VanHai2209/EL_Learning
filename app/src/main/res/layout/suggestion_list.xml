@@ -8,13 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/word_find"
-            android:textSize="22dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Hello"/>
         <TextView
+            android:textColor="#E07A7A"
             android:id="@+id/word_pronoun"
             android:layout_marginStart="50dp"
             android:textStyle="italic"
@@ -24,8 +26,9 @@
             android:text="həˈlō"/>
     </LinearLayout>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/word_translate"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Xin chào"/>

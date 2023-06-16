@@ -1,4 +1,7 @@
 package com.example.myapplication.viewModel;
 
-public class FrgTopicViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class FrgTopicViewModel extends ViewModel {
+
 }

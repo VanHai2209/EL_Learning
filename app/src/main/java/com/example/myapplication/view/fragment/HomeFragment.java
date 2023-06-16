@@ -1,38 +1,40 @@
 package com.example.myapplication.view.fragment;
 
-import android.graphics.ImageDecoder;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.SlideAdapter;
-import com.example.myapplication.SlideItem;
-import com.example.myapplication.databinding.ActivityMainBinding;
+import com.example.myapplication.apdapter.SlideAdapter;
+import com.example.myapplication.model.SlideItem;
+import com.example.myapplication.model.GetInforResponse;
+import com.example.myapplication.viewModel.HomeViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
+    HomeViewModel homeViewModel;
+    String email, token_login;
+    SharedPreferences sharedPreferences;
     ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
     VideoView videoViewUsers, videoViewWords, videoViewTopics;
     boolean isVideoPlaying = false;
+    TextView txtUsername;
     String videoPath_Users, videoPath_Topics, videoPath_Words;
 
     @Override
@@ -40,8 +42,20 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        sharedPreferences = getActivity().getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
+        token_login = sharedPreferences.getString("Token_Login",null);
+        email = sharedPreferences.getString("Email", null);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel.getInforUser(email, token_login);
+        homeViewModel.getData().observe(getViewLifecycleOwner(), new Observer<GetInforResponse>() {
+            @Override
+            public void onChanged(GetInforResponse getInforResponse) {
+                txtUsername.setText(getInforResponse.getDataUser().getUsername());
+            }
+        });
         viewPager2 = view.findViewById(R.id.viewPager);
+        txtUsername = view.findViewById(R.id.textView8);
+
         List<SlideItem> slideItems = new ArrayList<>();
         slideItems.add(new SlideItem(R.drawable.carousel1));
         slideItems.add(new SlideItem(R.drawable.carousel2));
