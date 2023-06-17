@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.MyListFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".view.fragment.MyListFragment"
+    android:background="@drawable/bgr_search"
+    android:orientation="vertical">
+    <AutoCompleteTextView
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="15dp"
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="Search..."
+        android:textColorHint="#E3CBD7"
+        android:inputType="text"/>
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/suggestionList"
+                android:layout_width="match_parent"
+                android:layout_height="700dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

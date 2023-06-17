@@ -43,7 +43,6 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        frgSearchViewModel = new FrgSearchViewModel();
         listView = view.findViewById(R.id.suggestionList);
         searchView = view.findViewById(R.id.searchView);
         sharedPreferences = getActivity().getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);

@@ -1,7 +1,5 @@
 package com.example.myapplication.data.repository;
 
-import android.util.Log;
-
 import com.example.myapplication.data.api.ApiService;
 import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.model.ApiResponse;
@@ -21,6 +19,50 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 public class UserRepository {
+    public void listPersonWord(String idPerson, ISearchWordResponse iSearchWordResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<SearchWordResponse> call = apiService.listPersonWord(idPerson);
+        call.enqueue(new Callback<SearchWordResponse>() {
+            @Override
+            public void onResponse(Call<SearchWordResponse> call, Response<SearchWordResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getErrCode() == 0){
+                        iSearchWordResponse.onSuccess(response.body());
+                    }
+                    else{
+                        iSearchWordResponse.onFail(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchWordResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public void searchWordTopic(String topic, ISearchWordResponse iSearchWordResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<SearchWordResponse> call = apiService.searchWordTopic(topic);
+        call.enqueue(new Callback<SearchWordResponse>() {
+            @Override
+            public void onResponse(Call<SearchWordResponse> call, Response<SearchWordResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getErrCode() == 0){
+                        iSearchWordResponse.onSuccess(response.body());
+                    }
+                    else{
+                        iSearchWordResponse.onFail(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchWordResponse> call, Throwable t) {
+
+            }
+        });
+    }
     public void getListTopic(IGetListTopic iGetListTopic){
         ApiService apiService = ApiServiceClient.getApiService();
         Call<TopicResponse> call = apiService.listTopic();
@@ -324,6 +366,29 @@ public class UserRepository {
             }
         });
 
+    }
+    public void addWordPerson(String idPerson, String idWord, IApiResponse iApiResponse){
+        ApiService apiService =  ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.addWordPerson(idPerson, idWord);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    if(response.body().getErrCode() == 0 ) {
+                        iApiResponse.onSuccess(response.body());
+                    }
+                    else {
+                        iApiResponse.onFail((response.body()));
+                    }
+                } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
     }
     public interface IApiResponse{
         void onSuccess(ApiResponse apiResponse);

@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="@drawable/bgr_search">
     <AutoCompleteTextView
-
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="15dp"
         android:id="@+id/searchView"

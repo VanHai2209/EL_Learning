@@ -32,6 +32,7 @@ public class LoginViewModel extends ViewModel {
                 sharedPreferences = context.getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
                 sharedPreferences.edit().putString("Token_Login", loginResponse.getToken()).apply();
                 sharedPreferences.edit().putString("Email", email).apply();
+                sharedPreferences.edit().putString("IdPerson", loginResponse.getUserData().getId()).apply();
                 ((MainActivityLogin) context).finish();
             }
 

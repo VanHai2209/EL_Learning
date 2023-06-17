@@ -1,49 +1,51 @@
 package com.example.myapplication.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.apdapter.AdapterSuggest;
+import com.example.myapplication.model.SearchWordResponse;
+import com.example.myapplication.model.WordData;
+import com.example.myapplication.view.SearchActivity2;
+import com.example.myapplication.view.TopicWordView;
+import com.example.myapplication.viewModel.FrgMyListViewModel;
+import com.example.myapplication.viewModel.FrgSearchViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class MyListFragment extends Fragment {
+    AutoCompleteTextView searchView;
+    ListView listView;
+    AdapterSuggest adapterSuggest;
+    private static final String TokenLogin = "token_login";
+    private static final String IdPerson = "id_person";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String getTokenLogin;
+    private String getIdPerson;
 
     public MyListFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyListFragment newInstance(String param1, String param2) {
+    public static MyListFragment newInstance(String token_login, String idPerson) {
         MyListFragment fragment = new MyListFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(TokenLogin, token_login);
+        args.putString(IdPerson, idPerson);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,8 +54,8 @@ public class MyListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            getTokenLogin = getArguments().getString(TokenLogin);
+            getIdPerson = getArguments().getString(IdPerson);
         }
     }
 
@@ -61,6 +63,49 @@ public class MyListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_list, container, false);
+        listView = view.findViewById(R.id.suggestionList);
+        searchView = view.findViewById(R.id.searchView);
+        FrgMyListViewModel frgMyListViewModel = new ViewModelProvider(this).get(FrgMyListViewModel.class);
+        frgMyListViewModel.listPersonWord(getIdPerson, getTokenLogin);
+        frgMyListViewModel.getData().observe(getViewLifecycleOwner(), new Observer<SearchWordResponse>() {
+            @Override
+            public void onChanged(SearchWordResponse searchWordResponse) {
+                ArrayList<WordData> suggestionArrayList = new ArrayList<>();
+                for(WordData wordData : searchWordResponse.getListWord()){
+                    suggestionArrayList.add(new WordData(wordData.getId(), wordData.getEn(), wordData.getVn(), wordData.getType(), wordData.getIPA(), wordData.getExample(), wordData.getImage(), wordData.getAudio(), wordData.getIdTopic()));
+                }
+                adapterSuggest = new AdapterSuggest(getActivity(), suggestionArrayList);
+                listView.setAdapter(adapterSuggest);
+                adapterSuggest.getFilter().filter("");
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                WordData wordData = (WordData) listView.getItemAtPosition(i);
+                Intent intent = new Intent(getActivity(), SearchActivity2.class);
+                intent.putExtra("wordData", wordData);
+                startActivity(intent);
+            }
+        });
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // Không cần thực hiện hành động trước khi văn bản thay đổi
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // Thực hiện hành động khi văn bản thay đổi
+                adapterSuggest.getFilter().filter(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Không cần thực hiện hành động sau khi văn bản thay đổi
+            }
+        });
+        return view;
     }
 }

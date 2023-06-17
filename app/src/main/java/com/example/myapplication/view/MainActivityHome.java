@@ -25,6 +25,7 @@ import com.example.myapplication.dialog.DialogLogout;
 import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.view.fragment.GameFragment;
 import com.example.myapplication.view.fragment.HomeFragment;
+import com.example.myapplication.view.fragment.MyListFragment;
 import com.example.myapplication.view.fragment.ProfileFragment;
 import com.example.myapplication.view.fragment.GrammarFragment;
 import com.example.myapplication.R;
@@ -40,7 +41,7 @@ public class MainActivityHome extends AppCompatActivity  {
     Toolbar home_toolbar;
     TextView txtUsername, txtEmail;
     HomeViewModel homeViewModel;
-    String email, token_login;
+    String email, token_login, idPerson;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -50,6 +51,10 @@ public class MainActivityHome extends AppCompatActivity  {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
+        sharedPreferences = getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
+        token_login = sharedPreferences.getString("Token_Login",null);
+        email = sharedPreferences.getString("Email", null);
+        idPerson = sharedPreferences.getString("IdPerson", null);
         fragmentTransaction.replace(R.id.fragment_container, homeFragment);
         fragmentTransaction.commit();
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -62,9 +67,6 @@ public class MainActivityHome extends AppCompatActivity  {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.ic_menu){
-                    sharedPreferences = getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
-                    token_login = sharedPreferences.getString("Token_Login",null);
-                    email = sharedPreferences.getString("Email", null);
                     homeViewModel = new ViewModelProvider(MainActivityHome.this).get(HomeViewModel.class);
                     homeViewModel.getInforUser(email, token_login);
                     homeViewModel.getData().observe(MainActivityHome.this, new Observer<GetInforResponse>() {
@@ -145,8 +147,8 @@ public class MainActivityHome extends AppCompatActivity  {
                     home_toolbar.setTitle("My List");
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    SearchFragment searchFragment = new SearchFragment();
-                    fragmentTransaction.replace(R.id.fragment_container, searchFragment);
+                    MyListFragment myListFragment = MyListFragment.newInstance(token_login, idPerson);
+                    fragmentTransaction.replace(R.id.fragment_container, myListFragment);
                     fragmentTransaction.commit();
                 }
                 else{

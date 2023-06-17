@@ -73,4 +73,15 @@ public interface ApiService {
     Call<ResponseBody> getAudio(@Path("audioName") String audioName);
     @GET("api/list-topic")
     Call<TopicResponse> listTopic();
+    @GET("api/list-topic")
+    Call<SearchWordResponse> searchWordTopic(
+            @Query("topic") String topic);
+    @FormUrlEncoded
+    @POST("api/addPersonWord")
+    Call<ApiResponse> addWordPerson(
+            @Field("idPerson") String idPerson,
+            @Field("idWord") String idWord);
+    @GET("api/listPersonWord")
+    Call<SearchWordResponse> listPersonWord(
+            @Query("idPerson") String idPerSon);
 }

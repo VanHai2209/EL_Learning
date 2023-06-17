@@ -5,28 +5,30 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-
+import android.widget.TextView;
 
 import com.example.myapplication.R;
 
-public class DialogChangePass extends Dialog {
+public class DialogGame extends Dialog {
+    private String score;
     private DialogCallback callback;
-    public DialogChangePass(Context context, DialogCallback callback){
+    public DialogGame(Context context, String score, DialogCallback callback){
         super(context);
         this.callback = callback;
+        this.score = score;
     }
     public interface DialogCallback{
-        void onCancelClicked();
-        void onSaveClicked();
+        public void onSaveClicked();
+        public void onRePlayClicked();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_change_pass);
-        Button btnSave = findViewById(R.id.btnSave);
-        Button btnCancel = findViewById(R.id.btnCancel);
+        setContentView(R.layout.dialog_game);
+        TextView txtScore = findViewById(R.id.txtScore);
+        txtScore.setText(score);
+        Button btnSave = findViewById(R.id.saveScore);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,10 +36,11 @@ public class DialogChangePass extends Dialog {
                 dismiss();
             }
         });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        Button btnReplay = findViewById(R.id.rePlay);
+        btnReplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callback.onCancelClicked();
+                callback.onRePlayClicked();
                 dismiss();
             }
         });

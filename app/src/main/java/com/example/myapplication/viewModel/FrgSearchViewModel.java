@@ -1,14 +1,19 @@
 package com.example.myapplication.viewModel;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.data.repository.UserRepository;
+import com.example.myapplication.model.ApiResponse;
 import com.example.myapplication.model.SearchWordResponse;
 
 public class FrgSearchViewModel extends ViewModel {
+
     private MutableLiveData<SearchWordResponse> wordData = new MutableLiveData<>();
     public LiveData<SearchWordResponse> getData(){
         return  wordData;
@@ -31,4 +36,5 @@ public class FrgSearchViewModel extends ViewModel {
             }
         });
     }
+
 }
