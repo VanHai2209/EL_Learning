@@ -28,12 +28,13 @@ public class LoginViewModel extends ViewModel {
         userRepository.login(email, password, new UserRepository.ILoginResponse() {
             @Override
             public void onSuccess(LoginResponse loginResponse) {
-                context.startActivity(new Intent(context, MainActivityHome.class));
+                Intent intent = new Intent(context, MainActivityHome.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
                 sharedPreferences = context.getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
                 sharedPreferences.edit().putString("Token_Login", loginResponse.getToken()).apply();
                 sharedPreferences.edit().putString("Email", email).apply();
                 sharedPreferences.edit().putString("IdPerson", loginResponse.getUserData().getId()).apply();
-                ((MainActivityLogin) context).finish();
             }
 
             @Override

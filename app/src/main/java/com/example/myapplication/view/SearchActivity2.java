@@ -25,7 +25,7 @@ import com.example.myapplication.viewModel.FrgSearchViewModel;
 import com.example.myapplication.viewModel.GrammarViewModel;
 
 public class SearchActivity2 extends AppCompatActivity {
-    AppCompatButton btnAddWord;
+    AppCompatButton btnAddWord, btnBack;
     String token_login, idPerson;
     SharedPreferences sharedPreferences;
     TextView txtWord;
@@ -42,11 +42,18 @@ public class SearchActivity2 extends AppCompatActivity {
         idPerson = sharedPreferences.getString("IdPerson", null);
         WordData wordData = getIntent().getParcelableExtra("wordData");
         btnAddWord = findViewById(R.id.btnAddWord);
+        btnBack = findViewById(R.id.btnBack);
         txtWord = findViewById(R.id.txtWord);
         txtWord.setText(wordData.getEn());
         viewPager2 = findViewById(R.id.viewPagerSearch);
         radioGroup = findViewById(R.id.radioGroup_search);
         radioGroup.check(R.id.radio_vi);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         btnAddWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

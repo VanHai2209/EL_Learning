@@ -13,6 +13,7 @@ import com.example.myapplication.model.UserData;
 import com.example.myapplication.view.fragment.ProfileFragment;
 
 public class HomeViewModel extends ViewModel {
+    GetInforResponse getInforResponse1;
     private MutableLiveData<GetInforResponse> data = new MutableLiveData<>();
     public LiveData<GetInforResponse> getData(){
         return data;
@@ -27,6 +28,7 @@ public class HomeViewModel extends ViewModel {
             @Override
             public void onSuccess(GetInforResponse getInforResponse) {
                 data.setValue(getInforResponse);
+                getInforResponse1 = getInforResponse;
             }
 
             @Override
@@ -36,4 +38,7 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
+    public GetInforResponse getGetInforResponse1() {
+        return getInforResponse1;
+    }
 }

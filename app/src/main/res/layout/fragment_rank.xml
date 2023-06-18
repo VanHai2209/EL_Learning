@@ -9,7 +9,7 @@
     android:background="@drawable/bgr_rank">
    <LinearLayout
        android:gravity="center"
-       android:padding="5dp"
+       android:padding="10dp"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal">
@@ -19,11 +19,11 @@
            android:layout_width="50dp"
            android:layout_height="50dp"
            android:src="@drawable/rank_img2"/>
-       <VideoView
+       <ImageView
            android:layout_gravity="center"
-           android:id="@+id/video_view_rank"
-           android:layout_width="150dp"
-           android:layout_height="150dp"/>
+           android:layout_width="120dp"
+           android:layout_height="120dp"
+           android:src="@drawable/cup"/>
        <ImageView
            android:layout_weight="1"
            android:layout_gravity="center"
@@ -34,7 +34,7 @@
    </LinearLayout>
     <LinearLayout
         android:padding="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/white_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -1,6 +1,7 @@
 package com.example.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -25,6 +26,7 @@ import com.example.myapplication.viewModel.TopicViewModel;
 import java.util.ArrayList;
 
 public class TopicWordView extends AppCompatActivity {
+    AppCompatButton btnBack;
     TextView txtNameTopic;
     TopicViewModel topicViewModel;
     AutoCompleteTextView searchView;
@@ -40,6 +42,13 @@ public class TopicWordView extends AppCompatActivity {
         token_login = sharedPreferences.getString("Token_Login",null);
         topic = getIntent().getStringExtra("topic");
         txtNameTopic = findViewById(R.id.txtNameTopic);
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.suggestionList);
         txtNameTopic.setText(getIntent().getStringExtra("topic"));

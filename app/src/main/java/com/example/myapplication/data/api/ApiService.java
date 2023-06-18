@@ -4,6 +4,7 @@ import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.model.Grammar;
 import com.example.myapplication.model.GrammarResponse;
 import com.example.myapplication.model.LoginResponse;
+import com.example.myapplication.model.RankResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.SearchWordResponse;
 import com.example.myapplication.model.TopicResponse;
@@ -18,6 +19,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -84,4 +86,11 @@ public interface ApiService {
     @GET("api/listPersonWord")
     Call<SearchWordResponse> listPersonWord(
             @Query("idPerson") String idPerSon);
+    @GET("api/getRankListUser")
+    Call<RankResponse> getListRank();
+    @FormUrlEncoded
+    @PUT("api/updateScore")
+    Call<ApiResponse> updateScore(
+            @Field("idPerson") String idPerson,
+            @Field("score") String score);
 }

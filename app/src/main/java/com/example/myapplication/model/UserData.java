@@ -1,6 +1,49 @@
 package com.example.myapplication.model;
 
-public class UserData {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class UserData implements Parcelable {
+    protected UserData(Parcel in){
+        email = in.readString();
+        username = in.readString();
+        name = in.readString();
+        telephone = in.readString();
+        address = in.readString();
+        gender = in.readString();
+        birthday = in.readString();
+    }
+    public static final Creator<UserData> CREATOR = new Creator<UserData>() {
+        @Override
+        public UserData createFromParcel(Parcel in) {
+            return new UserData(in);
+        }
+
+        @Override
+        public UserData[] newArray(int size) {
+            return new UserData[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(email);
+        dest.writeString(username);
+        dest.writeString(name);
+        dest.writeString(address);
+        dest.writeString(telephone);
+        dest.writeString(gender);
+        dest.writeString(birthday);
+
+    }
+
     private String email;
     private String username;
     private String name;

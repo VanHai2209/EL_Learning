@@ -8,9 +8,10 @@
     android:background="@drawable/bgr_game_vocab">
 
     <LinearLayout
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#C1AEAE"
+        android:background="@drawable/gradient_toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,17 +20,19 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBack"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:background="@drawable/baseline_arrow_back_ios_new_24"
-            android:backgroundTint="@color/black" />
+            android:backgroundTint="@color/white" />
 
         <TextView
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="85dp"
+            android:layout_marginStart="90dp"
             android:fontFamily="@font/font_text_home"
             android:text="Vocabulary"
             android:textSize="32dp" />

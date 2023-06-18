@@ -27,7 +27,6 @@ public class DialogEditProfile extends AppCompatDialog {
     SharedPreferences sharedPreferences;
 
     EditText txtUsername, txtName, txtPhone, txtAddress, txtBirthday;
-    RadioGroup group_gender;
     private DialogCallback callback;
 
     public DialogEditProfile(@NonNull Context context, LiveData<GetInforResponse> data, DialogCallback callback) {

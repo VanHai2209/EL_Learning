@@ -160,8 +160,9 @@ public class MainActivityHome extends AppCompatActivity  {
 
                         @Override
                         public void onLogoutClicked() {
-                            startActivity(new Intent(MainActivityHome.this, MainActivityLogin.class));
-                            finish();
+                            Intent intent = new Intent(MainActivityHome.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
                             Toast.makeText(MainActivityHome.this, "Log Out !", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -182,7 +183,8 @@ public class MainActivityHome extends AppCompatActivity  {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else {
-            super.onBackPressed();
+
         }
     }
+
 }

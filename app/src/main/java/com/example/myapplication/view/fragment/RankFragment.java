@@ -1,9 +1,13 @@
 package com.example.myapplication.view.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,47 +18,44 @@ import android.widget.VideoView;
 import com.example.myapplication.model.ItemRank;
 import com.example.myapplication.R;
 import com.example.myapplication.apdapter.AdapterRank;
+import com.example.myapplication.model.RankModel;
+import com.example.myapplication.model.RankResponse;
+import com.example.myapplication.viewModel.FrgRankViewModel;
 
 import java.util.ArrayList;
 
 
 public class RankFragment extends Fragment {
+    FrgRankViewModel frgRankViewModel;
+    String token_login;
+    SharedPreferences sharedPreferences;
     ListView listView;
     AdapterRank adapterRank;
-    ArrayList<ItemRank> itemRankArrayList = new ArrayList<>();
-    VideoView videoViewRank;
-    boolean isVideoPlaying = false;
-    String videoPath_rank;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_rank, container, false);
-        videoViewRank = view.findViewById(R.id.video_view_rank);
         listView = view.findViewById(R.id.rankList);
-        for(int i=0; i<20;i++){
-            itemRankArrayList.add(new ItemRank(""+(i+1),"Vũ Hoài Anh", "20000"));
-        }
-        adapterRank = new AdapterRank(getActivity(), itemRankArrayList);
-        listView.setAdapter(adapterRank);
-        videoViewRank.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        sharedPreferences = getActivity().getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
+        token_login = sharedPreferences.getString("Token_Login",null);
+        frgRankViewModel = new ViewModelProvider(this).get(FrgRankViewModel.class);
+        frgRankViewModel.getListRank(token_login);
+        frgRankViewModel.getData().observe(getViewLifecycleOwner(), new Observer<RankResponse>() {
             @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                isVideoPlaying = true;
-                mediaPlayer.setLooping(true);
-            }
-        });
-        videoViewRank.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                if(isVideoPlaying){
-                    videoViewRank.start();
+            public void onChanged(RankResponse rankResponse) {
+                ArrayList<RankModel> arrayList = new ArrayList<>();
+                for(RankModel rankModel : rankResponse.getListUsers()){
+                    if(rankModel.getMyrank() != null){
+                        arrayList.add(new RankModel(rankModel.getMyrank(), rankModel.getUsername(), rankModel.getTotalScore(), rankModel.getEmail()));
+                    }
                 }
+                adapterRank = new AdapterRank(getActivity(), arrayList, token_login);
+                listView.setAdapter(adapterRank);
             }
         });
-        videoPath_rank = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.rank;
-        videoViewRank.setVideoPath(videoPath_rank);
-        videoViewRank.start();
+
         return view;
     }
 }

@@ -7,6 +7,7 @@ import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.model.Grammar;
 import com.example.myapplication.model.GrammarResponse;
 import com.example.myapplication.model.LoginResponse;
+import com.example.myapplication.model.RankResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.SearchWordResponse;
 import com.example.myapplication.model.TopicResponse;
@@ -62,6 +63,31 @@ public class UserRepository {
 
             }
         });
+    }
+    public void getListRank(IGetListRank iGetListRank){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<RankResponse> call = apiService.getListRank();
+        call.enqueue(new Callback<RankResponse>() {
+            @Override
+            public void onResponse(Call<RankResponse> call, Response<RankResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getErrCode() == 0){
+                        iGetListRank.onSuccess(response.body());
+                    }
+                    else
+                        iGetListRank.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RankResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetListRank{
+        public void onSuccess(RankResponse rankResponse);
+        public void onFail(RankResponse rankResponse);
     }
     public void getListTopic(IGetListTopic iGetListTopic){
         ApiService apiService = ApiServiceClient.getApiService();
@@ -366,6 +392,29 @@ public class UserRepository {
             }
         });
 
+    }
+    public void updateScore(String idPerson, String score, IApiResponse iApiResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.updateScore(idPerson, score);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    if(response.body().getErrCode() == 0 ) {
+                        iApiResponse.onSuccess(response.body());
+                    }
+                    else {
+                        iApiResponse.onFail((response.body()));
+                    }
+                } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
     }
     public void addWordPerson(String idPerson, String idWord, IApiResponse iApiResponse){
         ApiService apiService =  ApiServiceClient.getApiService();

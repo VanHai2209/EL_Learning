@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TopicView extends AppCompatActivity {
+    AppCompatButton btnBack;
     String token_login;
     SharedPreferences sharedPreferences;
     TopicViewModel topicViewModel;
@@ -33,6 +35,13 @@ public class TopicView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_view);
         listTopic = findViewById(R.id.listTopic);
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         sharedPreferences = this.getSharedPreferences("EL_Learning", Context.MODE_PRIVATE);
         token_login = sharedPreferences.getString("Token_Login",null);
 

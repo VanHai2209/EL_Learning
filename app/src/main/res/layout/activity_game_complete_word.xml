@@ -6,9 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".view.GameCompleteWord"
     android:background="@drawable/bgr_game_complete">
+
     <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradient_toolbar"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -17,11 +21,11 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@drawable/baseline_arrow_back_ios_new_24"
-            android:backgroundTint="@color/black" />
+            android:backgroundTint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,20 +34,55 @@
             android:layout_marginStart="70dp"
             android:fontFamily="@font/font_text_home"
             android:text="Complete Word"
-            android:textSize="32dp" />
+            android:textColor="@color/white"
+            android:textSize="30dp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageCorrect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/happy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintVertical_bias="0.11" />
+    <ImageView
+        android:id="@+id/imageIncorrect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/unhappy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintVertical_bias="0.11" />
+    <ImageView
+        android:id="@+id/nextQuestion"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/next_question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintVertical_bias="0.11" />
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_text"
-        android:text="Question 1"
         android:textSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859" />
+        app:layout_constraintVertical_bias="0.786" />
 
     <TextView
         android:id="@+id/textView11"
@@ -54,77 +93,85 @@
         android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.426" />
 
     <EditText
-        android:gravity="center"
+        android:maxLength="1"
+        android:inputType="text"
         android:id="@+id/editText2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
         android:background="#E1D8DB"
+        android:gravity="center"
         android:hint="Your answer"
+        android:textColor="#F44336"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.138" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:backgroundTint="#CFB2D5"
-        android:background="@drawable/button_blue_border"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#4CAF50"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.2" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:background="@drawable/button_blue_border"
-        android:backgroundTint="#CF7F79"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btnSkip"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#C14D44"
         android:text="Skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <LinearLayout
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_blue_border"
         android:orientation="vertical"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106">
+        app:layout_constraintVertical_bias="0.105">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Hi:" />
+                android:text="Hi:"
+                android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vũ Hoài Anh" />
+                android:layout_marginStart="10dp"
+                android:text="Vũ Hoài Anh"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,14 +181,35 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Time:" />
+                android:layout_gravity="center"
+                android:text="Heart:"
+                android:textColor="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="15 s" />
+            <ImageView
+                android:id="@+id/heart1"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/heart2"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/heart3"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,14 +219,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Score:" />
+                android:text="Score:"
+                android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="80 points" />
+                android:layout_marginStart="10dp"
+                android:text="0"
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
