@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".view.GameSovleitout"
     android:background="@drawable/bgr_game_complete">
+
     <LinearLayout
-        android:background="@drawable/gradient_toolbar"
-        android:padding="5dp"
+        android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradient_toolbar"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,121 +28,95 @@
             android:backgroundTint="@color/white" />
 
         <TextView
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="82dp"
             android:fontFamily="@font/font_text_home"
             android:text="Solve It Out"
+            android:textColor="@color/white"
             android:textSize="30dp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/nextQuestion"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/next_question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
+        app:layout_constraintVertical_bias="0.089" />
+    <ImageView
+        android:id="@+id/imageCorrect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/happy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
+        app:layout_constraintVertical_bias="0.089" />
+    <ImageView
+        android:id="@+id/imageIncorrect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/unhappy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
+        app:layout_constraintVertical_bias="0.089" />
+
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_text"
         android:text="Question 1"
         android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="HEL_O"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#E1D8DB"
-        android:hint="Your answer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.079" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue_border"
-        android:backgroundTint="#EA6262"
-        android:text="Undo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue_border"
-        android:backgroundTint="#CFB2D5"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue_border"
-        android:backgroundTint="#CF7F79"
-        android:text="Skip"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.281" />
 
     <LinearLayout
         android:id="@+id/linearLayout8"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_blue_border"
         android:orientation="vertical"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106">
-
+        app:layout_constraintVertical_bias="0.105">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Hi:" />
+                android:text="Hi:"
+                android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vũ Hoài Anh" />
+                android:layout_marginStart="10dp"
+                android:text="Vũ Hoài Anh"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,14 +126,32 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_gravity="center"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Time:" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="15 s" />
+                android:text="Heart:"
+                android:textColor="@color/black" />
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/heart1"
+                android:src="@drawable/heart"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginStart="10dp" />
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/heart2"
+                android:src="@drawable/heart"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginStart="10dp" />
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/heart3"
+                android:src="@drawable/heart"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginStart="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -167,14 +161,68 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Score:" />
+                android:text="Score:"
+                android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="80 points" />
+                android:layout_marginStart="10dp"
+                android:text="0"
+                android:textColor="@color/black" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.19"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_layout"
+        app:layout_constraintVertical_bias="0.396">
+
+        <Button
+            android:text="submit"
+            android:backgroundTint="#F44336"
+            android:id="@+id/btnSubmit"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+
+        <Button
+            android:text="Return"
+            android:backgroundTint="#9C27B0"
+            android:id="@+id/btnReturn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp" />
+
+        <Button
+            android:text="Skip"
+            android:id="@+id/btnSkip"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

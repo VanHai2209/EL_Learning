@@ -125,7 +125,8 @@ public class GameSelectWord extends AppCompatActivity {
 
                         @Override
                         public void onRePlayClicked() {
-                            startActivity(new Intent(GameSelectWord.this, GameSelectWord.class));
+                            Intent intent = getIntent();
+                            startActivity(intent);
                             finish();
                         }
                     });

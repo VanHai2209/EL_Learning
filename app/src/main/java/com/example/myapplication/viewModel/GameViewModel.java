@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Random;
 
 public class GameViewModel extends ViewModel {
+    private String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    private int keyPosition;
     private MutableLiveData<Boolean> checkLive = new MutableLiveData<>();
     public LiveData<Boolean> getCheckLive (){
         return checkLive;
@@ -172,6 +174,20 @@ public class GameViewModel extends ViewModel {
                 imageView.setVisibility(View.GONE);
             }
         }, 800);
+    }
+    public String wordInserted(String word){
+        char randomChar = getRandomChar(alphabet);
+        key = randomChar;
+
+        return insertChar(word, randomChar);
+    }
+    public String insertChar(String word, char randomChar){
+        Random random = new Random();
+        int position = random.nextInt(word.length() + 1);
+        keyPosition = position;
+        StringBuilder stringBuilder = new StringBuilder(word);
+        stringBuilder.insert(position, randomChar);
+        return stringBuilder.toString();
     }
     public String replaceWord(String word){
         char randomChar = getRandomChar(word);

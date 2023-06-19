@@ -160,7 +160,8 @@ public class GameCompleteWord extends AppCompatActivity {
 
             @Override
             public void onRePlayClicked() {
-                startActivity(new Intent(GameCompleteWord.this, GameCompleteWord.class));
+                Intent intent = getIntent();
+                startActivity(intent);
                 finish();
             }
         });
