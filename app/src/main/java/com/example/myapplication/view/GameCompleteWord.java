@@ -1,6 +1,7 @@
 package com.example.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -40,6 +41,7 @@ public class GameCompleteWord extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     ArrayList<WordData> list = new ArrayList<>();
     Button btnSubmit, btnSkip;
+    AppCompatButton btnClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,13 @@ public class GameCompleteWord extends AppCompatActivity {
         heart3 = findViewById(R.id.heart3);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSkip = findViewById(R.id.btnSkip);
+        btnClose = findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameViewModel.dialogExit(GameCompleteWord.this);
+            }
+        });
         imgCorrect = findViewById(R.id.imageCorrect);
         imgCorrect.setVisibility(View.INVISIBLE);
         imgInCorrect = findViewById(R.id.imageIncorrect);
@@ -167,5 +176,10 @@ public class GameCompleteWord extends AppCompatActivity {
         });
         dialogGame.setCanceledOnTouchOutside(false);
         dialogGame.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

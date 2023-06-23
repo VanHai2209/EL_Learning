@@ -1,6 +1,7 @@
 package com.example.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSelectWord extends AppCompatActivity {
+    AppCompatButton btnClose;
     List<ImageView> listHeart;
     ImageView imageView, imageIncorrect, heart1, heart2, heart3;
     TextView score, userName;
@@ -64,6 +66,13 @@ public class GameSelectWord extends AppCompatActivity {
         imageView.setVisibility(View.INVISIBLE);
         imageIncorrect = findViewById(R.id.imageIncorrect);
         imageIncorrect.setVisibility(View.INVISIBLE);
+        btnClose = findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameViewModel.dialogExit(GameSelectWord.this);
+            }
+        });
         FrgMyListViewModel frgMyListViewModel = new ViewModelProvider(this).get(FrgMyListViewModel.class);
         frgMyListViewModel.listPersonWord(idPerson, token_login);
         frgMyListViewModel.getData().observe(this, new Observer<SearchWordResponse>() {
@@ -137,4 +146,8 @@ public class GameSelectWord extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

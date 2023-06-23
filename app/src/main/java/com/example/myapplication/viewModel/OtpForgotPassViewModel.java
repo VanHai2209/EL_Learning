@@ -25,7 +25,6 @@ public class OtpForgotPassViewModel extends ViewModel {
             @Override
             public void onSuccess(ApiResponse apiResponse) {
                 context.startActivity(new Intent(context, MainActivityForgetPass3.class));
-                ((MainActivityForgetPass2) context).finish();
             }
 
             @Override

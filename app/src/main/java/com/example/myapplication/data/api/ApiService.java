@@ -7,17 +7,18 @@ import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RankResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.SearchWordResponse;
+import com.example.myapplication.model.TestResponse;
 import com.example.myapplication.model.TopicResponse;
-import com.example.myapplication.model.VerifyRegisterResponse;
 
 import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -43,8 +44,12 @@ public interface ApiService {
             @Field("birthday") String birthday);
     @FormUrlEncoded
     @POST("api/verifyRegister")
-    Call<VerifyRegisterResponse> verifyRegister(
+    Call<ApiResponse> verifyRegister(
             @Field("OTP") String otp);
+    @FormUrlEncoded
+    @POST("api/resendOTP")
+    Call<ApiResponse> resendOtp(
+            @Field("email") String email);
     @FormUrlEncoded
     @POST("api/forgotPassword")
     Call<ApiResponse> forgotPassword(
@@ -86,11 +91,39 @@ public interface ApiService {
     @GET("api/listPersonWord")
     Call<SearchWordResponse> listPersonWord(
             @Query("idPerson") String idPerSon);
+    @GET("api/checkExistPersonWord")
+    Call<ApiResponse> checkExistPersonWord(
+            @Query("idPerson") String idPerSon,
+            @Query("idWord") String idWord);
     @GET("api/getRankListUser")
     Call<RankResponse> getListRank();
+    @GET("api/test")
+    Call<TestResponse> getTest(
+            @Query("name") String nameTest);
     @FormUrlEncoded
     @PUT("api/updateScore")
     Call<ApiResponse> updateScore(
             @Field("idPerson") String idPerson,
             @Field("score") String score);
+    @FormUrlEncoded
+    @PUT("api/changePassword")
+    Call<ApiResponse> changePassword(
+            @Field("email") String email,
+            @Field("oldPass") String oldPass,
+            @Field("newPass") String newPass);
+    @FormUrlEncoded
+    @PUT("api/updateUser")
+    Call<ApiResponse> updateUser(
+            @Field("email") String email,
+            @Field("username") String username,
+            @Field("name") String name,
+            @Field("address") String address,
+            @Field("telephone") String telephone,
+            @Field("gender") String gender,
+            @Field("birthday") String birthday);
+    @FormUrlEncoded
+    @DELETE("api/deletePersonword")
+    Call<ApiResponse> deletePersonword(
+            @Field("idPerson") String idPerson,
+            @Field("idWord") String idWord);
 }

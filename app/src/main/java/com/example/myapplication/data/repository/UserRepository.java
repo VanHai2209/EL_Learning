@@ -1,5 +1,7 @@
 package com.example.myapplication.data.repository;
 
+import android.util.Log;
+
 import com.example.myapplication.data.api.ApiService;
 import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.model.ApiResponse;
@@ -10,16 +12,86 @@ import com.example.myapplication.model.LoginResponse;
 import com.example.myapplication.model.RankResponse;
 import com.example.myapplication.model.RegisterResponse;
 import com.example.myapplication.model.SearchWordResponse;
+import com.example.myapplication.model.TestResponse;
 import com.example.myapplication.model.TopicResponse;
-import com.example.myapplication.model.VerifyRegisterResponse;
 
+import java.io.IOException;
 import java.util.List;
 
+import okhttp3.Request;
 import okhttp3.ResponseBody;
+import okio.Timeout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 public class UserRepository {
+    public void checkExistPersonWord(String idPerson, String idWord, IApiResponse iApiResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.checkExistPersonWord(idPerson, idWord);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if(response.body().getErrCode() == 0){
+                    iApiResponse.onSuccess(response.body());
+                }
+                else {
+                    iApiResponse.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public void deletePersonword(String idPerson, String idWord, IApiResponse iApiResponse){
+
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.deletePersonword(idPerson, idWord);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if(response.body().getErrCode() == 0){
+                    iApiResponse.onSuccess(response.body());
+                }
+                else {
+                    iApiResponse.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Log.e("API Error", t.getMessage()); // Ghi log lỗi
+                t.printStackTrace(); // In ra thông tin lỗi trên Logcat
+                iApiResponse.onFail(null); // Gọi callback thông báo lỗi cho lớp gọi
+            }
+        });
+    }
+    public void getTest(String nameTest, IGetTest iGetTest){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<TestResponse> call = apiService.getTest(nameTest);
+        call.enqueue(new Callback<TestResponse>() {
+            @Override
+            public void onResponse(Call<TestResponse> call, Response<TestResponse> response) {
+                if(response.body().getErrCode() == 0){
+                    iGetTest.onSuccess(response.body());
+                }
+                else {
+                    iGetTest.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TestResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public interface IGetTest{
+        public void onSuccess(TestResponse testResponse);
+        public void onFail(TestResponse testResponse);
+    }
     public void listPersonWord(String idPerson, ISearchWordResponse iSearchWordResponse){
         ApiService apiService = ApiServiceClient.getApiService();
         Call<SearchWordResponse> call = apiService.listPersonWord(idPerson);
@@ -293,34 +365,33 @@ public class UserRepository {
         void onSuccess(RegisterResponse registerResponse);
         void onFail(RegisterResponse registerResponse);
     }
-    public void verifyRegister(String otp,IVerifyRegisterResponse iVerifyRegisterResponse ){
+    public void verifyRegister(String otp, IApiResponse iApiResponse ){
         ApiService apiService = ApiServiceClient.getApiService();
-        Call<VerifyRegisterResponse> call = apiService.verifyRegister(otp);
-        call.enqueue(new Callback<VerifyRegisterResponse>() {
+        Call<ApiResponse> call = apiService.verifyRegister(otp);
+
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<VerifyRegisterResponse> call, Response<VerifyRegisterResponse> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     if(response.body().getErrCode() == 0 ) {
-                        iVerifyRegisterResponse.onSuccess(response.body());
+                        iApiResponse.onSuccess(response.body());
                     }
                     else {
-                        iVerifyRegisterResponse.onFail((response.body()));
+                        iApiResponse.onFail((response.body()));
                     }
                 } else {
+
                 }
             }
 
             @Override
-            public void onFailure(Call<VerifyRegisterResponse> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
 
             }
         });
 
     }
-    public interface IVerifyRegisterResponse{
-        void onSuccess(VerifyRegisterResponse verifyRegisterResponse);
-        void onFail(VerifyRegisterResponse verifyRegisterResponse);
-    }
+
     public void forgotPassword(String email,IApiResponse iApiResponse ){
         ApiService apiService = ApiServiceClient.getApiService();
         Call<ApiResponse> call = apiService.forgotPassword(email);
@@ -430,6 +501,66 @@ public class UserRepository {
                         iApiResponse.onFail((response.body()));
                     }
                 } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public void resendOtp(String email, IApiResponse iApiResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.resendOtp(email);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if(response.body().getErrCode() == 0){
+                    iApiResponse.onSuccess(response.body());
+                }
+                else {
+                    iApiResponse.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public void changePassword(String email, String oldPass, String newPass, IApiResponse iApiResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.changePassword(email, oldPass, newPass);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if(response.body().getErrCode() == 0){
+                    iApiResponse.onSuccess(response.body());
+                }
+                else {
+                    iApiResponse.onFail(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+
+            }
+        });
+    }
+    public void updateUser(String email, String username, String name, String address, String telephone, String gender, String birthday, IApiResponse iApiResponse){
+        ApiService apiService = ApiServiceClient.getApiService();
+        Call<ApiResponse> call = apiService.updateUser(email, username, name, address, telephone, gender, birthday);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if(response.body().getErrCode() == 0){
+                    iApiResponse.onSuccess(response.body());
+                }
+                else {
+                    iApiResponse.onFail(response.body());
                 }
             }
 

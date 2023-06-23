@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.fragment.QuestionTestFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:backgroundTint="#D9CECE"
+        android:background="@drawable/button_blue_border"
+        android:padding="8dp"
+        android:id="@+id/txtQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question" />
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:textColor="@color/black"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue_border"
+            android:gravity="center"
+            android:text="Answer 1" />
+
+        <RadioButton
+            android:textColor="@color/black"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue_border"
+            android:gravity="center"
+            android:text="Answer 2" />
+
+        <RadioButton
+            android:textColor="@color/black"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue_border"
+            android:gravity="center"
+            android:text="Answer 3" />
+
+        <RadioButton
+            android:textColor="@color/black"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue_border"
+            android:gravity="center"
+            android:text="Answer 4" />
+    </RadioGroup>
+</LinearLayout>

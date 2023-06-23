@@ -26,6 +26,7 @@ import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.view.fragment.GameFragment;
 import com.example.myapplication.view.fragment.HomeFragment;
 import com.example.myapplication.view.fragment.MyListFragment;
+import com.example.myapplication.view.fragment.OnFragmentInteractionListener;
 import com.example.myapplication.view.fragment.ProfileFragment;
 import com.example.myapplication.view.fragment.GrammarFragment;
 import com.example.myapplication.R;
@@ -35,7 +36,7 @@ import com.example.myapplication.view.fragment.TopicFragment;
 import com.example.myapplication.viewModel.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivityHome extends AppCompatActivity  {
+public class MainActivityHome extends AppCompatActivity implements OnFragmentInteractionListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar home_toolbar;
@@ -187,4 +188,27 @@ public class MainActivityHome extends AppCompatActivity  {
         }
     }
 
+    @Override
+    public void onClicked(String nameFragment) {
+        home_toolbar.setTitle(nameFragment);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if(nameFragment.equals("Rank")){
+            navigationView.setCheckedItem(R.id.nav_rank);
+            RankFragment rankFragment = new RankFragment();
+            fragmentTransaction.replace(R.id.fragment_container, rankFragment);
+            fragmentTransaction.commit();
+        } else if (nameFragment.equals("Topic")) {
+            navigationView.setCheckedItem(R.id.nav_topic);
+            TopicFragment topicFragment = new TopicFragment();
+            fragmentTransaction.replace(R.id.fragment_container, topicFragment);
+            fragmentTransaction.commit();
+        }
+        else {
+            navigationView.setCheckedItem(R.id.nav_search);
+            SearchFragment searchFragment = new SearchFragment();
+            fragmentTransaction.replace(R.id.fragment_container, searchFragment);
+            fragmentTransaction.commit();
+        }
+    }
 }

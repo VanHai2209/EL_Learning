@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="35dp"
-    android:backgroundTint="@color/black"
-    android:background="@drawable/button_blue_border">
+    android:background="@color/black">
     <TextView
         android:textColor="@color/white"
         android:elevation="50dp"

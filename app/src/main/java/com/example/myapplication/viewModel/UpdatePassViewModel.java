@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.myapplication.data.repository.UserRepository;
 import com.example.myapplication.model.ApiResponse;
+import com.example.myapplication.view.MainActivity;
 import com.example.myapplication.view.MainActivityForgetPass3;
+import com.example.myapplication.view.MainActivityHome;
 import com.example.myapplication.view.MainActivityLogin;
 
 public class UpdatePassViewModel extends ViewModel {
@@ -35,9 +37,10 @@ public class UpdatePassViewModel extends ViewModel {
         userRepository.updatePassword(email, password, new UserRepository.IApiResponse() {
             @Override
             public void onSuccess(ApiResponse apiResponse) {
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 Toast.makeText(context, apiResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
-                context.startActivity(new Intent(context, MainActivityLogin.class));
-                ((MainActivityForgetPass3) context).finish();
+                context.startActivity(intent);
             }
 
             @Override

@@ -24,9 +24,12 @@ public class RegisterViewModel extends ViewModel {
         userRepository.register(email, password, username, name, address, telephone, gender, birthday, new UserRepository.IRegisterResponse(){
             @Override
             public void onSuccess(RegisterResponse registerResponse){
-                context.startActivity(new Intent(context, PinviewActivity.class));
+                String token = registerResponse.getUserData().getToken();
+                Intent intent = new Intent(context, PinviewActivity.class);
+                intent.putExtra("Token Register", token);
+                intent.putExtra("Email", email);
+                context.startActivity(intent);
                 Toast.makeText(context,"We sent otp to "+email, Toast.LENGTH_LONG).show();
-                ApiServiceClient.setToken(registerResponse.getUserData().getToken());
             }
             @Override
             public void onFail(RegisterResponse registerResponse){

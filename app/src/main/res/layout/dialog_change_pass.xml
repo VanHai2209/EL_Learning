@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="35dp"
-    android:backgroundTint="@color/black"
-    android:background="@drawable/button_blue_border">
+    android:background="@color/black">
     <TextView
         android:textColor="@color/white"
         android:backgroundTint="#3A3737"
@@ -30,6 +29,7 @@
         android:text="Make sure you remember your password"
         android:textColor="#F2F0ED"/>
     <EditText
+        android:id="@+id/oldPass"
         android:inputType="textPassword"
         android:drawableTint="#03A9F4"
         android:drawablePadding="20dp"
@@ -42,6 +42,7 @@
         android:hint="Your current password"
         android:textColorHint="#03A9F4"/>
     <EditText
+        android:id="@+id/newPass"
         android:inputType="textPassword"
         android:drawableTint="#03A9F4"
         android:textColorHint="#03A9F4"
@@ -55,6 +56,7 @@
         android:hint="New password" />
 
     <EditText
+        android:id="@+id/reNewpass"
         android:inputType="textPassword"
         android:drawableTint="#03A9F4"
         android:textColorHint="#03A9F4"
@@ -68,6 +70,7 @@
         android:hint="Confirm new password" />
 
     <LinearLayout
+        android:layout_marginTop="22dp"
         android:padding="10dp"
         android:gravity="center"
         android:orientation="horizontal"

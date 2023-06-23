@@ -25,7 +25,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center"
-            android:background="@drawable/baseline_arrow_back_ios_new_24"
+            android:id="@+id/btnClose"
+            android:background="@drawable/baseline_close_24"
             android:backgroundTint="@color/white" />
 
         <TextView

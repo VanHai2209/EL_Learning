@@ -29,6 +29,7 @@ public class FrgGrammarViewModel extends ViewModel {
         userRepository.getGrammar(new UserRepository.IGetGrammar() {
             @Override
             public void onSuccess(List<Grammar> listGrammar) {
+                Log.d("vanhai", "onSuccess: "+"call grammar thanh công");
                 data.setValue(listGrammar);
             }
         });

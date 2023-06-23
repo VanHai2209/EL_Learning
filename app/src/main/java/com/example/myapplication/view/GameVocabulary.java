@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication.R;
+import com.example.myapplication.dialog.DialogIntroGame;
 import com.example.myapplication.model.GetInforResponse;
 import com.example.myapplication.viewModel.HomeViewModel;
 
@@ -49,8 +50,7 @@ public class GameVocabulary extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameVocabulary.this, GameCompleteWord.class);
-                putInfor(intent);
-                startActivity(intent);
+                openDialog(GameVocabulary.this, intent );
             }
         });
         btnArrangeWord = findViewById(R.id.btn_arrange_word);
@@ -58,17 +58,15 @@ public class GameVocabulary extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameVocabulary.this, GameArrangeWord.class);
-                putInfor(intent);
-                startActivity(intent);
+                openDialog(GameVocabulary.this, intent );
             }
         });
         btnSelectWord = findViewById(R.id.btn_select_word);
         btnSelectWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(GameVocabulary.this, GameSelectWord.class);
-                putInfor(intent);
-                startActivity(intent);
+                Intent intent = new Intent(GameVocabulary.this, GameSelectWord.class);
+                openDialog(GameVocabulary.this, intent );
             }
         });
         btnSovleWord = findViewById(R.id.btn_sovle_word);
@@ -76,12 +74,27 @@ public class GameVocabulary extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameVocabulary.this, GameSovleitout.class);
-                putInfor(intent);
-                startActivity(intent);
+                openDialog(GameVocabulary.this, intent );
             }
         });
     }
     public void putInfor(Intent intent){
         intent.putExtra("inforUser", inforResponse.getDataUser());
+    }
+    public void openDialog(Context context, Intent intent){
+        DialogIntroGame dialogIntroGame = new DialogIntroGame(context, new DialogIntroGame.DialogCallback() {
+            @Override
+            public void onCancelClicked() {
+
+            }
+
+            @Override
+            public void onReadyClicked() {
+                putInfor(intent);
+                startActivity(intent);
+            }
+        });
+        dialogIntroGame.setCanceledOnTouchOutside(false);
+        dialogIntroGame.show();
     }
 }

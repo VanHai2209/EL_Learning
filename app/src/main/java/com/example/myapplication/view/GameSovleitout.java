@@ -2,6 +2,7 @@ package com.example.myapplication.view;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -40,6 +41,7 @@ public class GameSovleitout extends AppCompatActivity {
     int countHeart = 3;
     int countScore = 0;
     Button buttonChar, btnSubmit, btnReturn, btnSkip;
+    AppCompatButton btnClose;
     LinearLayout container;
     private String token_login, idPerson;
     SharedPreferences sharedPreferences;
@@ -73,6 +75,13 @@ public class GameSovleitout extends AppCompatActivity {
         imgNext = findViewById(R.id.nextQuestion);
         imgNext.setVisibility(View.INVISIBLE);
         numberQuestion = findViewById(R.id.textView12);
+        btnClose = findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameViewModel.dialogExit(GameSovleitout.this);
+            }
+        });
         listHeart = new ArrayList<>();
         listHeart.add(heart1);
         listHeart.add(heart2);
@@ -216,5 +225,10 @@ public class GameSovleitout extends AppCompatActivity {
         String wordInserted = gameViewModel.wordInserted(list.get(count).getEn());
         listWordSovle.add(wordInserted);
         setWordToButton(wordInserted);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

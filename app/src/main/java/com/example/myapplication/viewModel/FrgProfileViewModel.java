@@ -22,7 +22,6 @@ public class FrgProfileViewModel {
 
     public FrgProfileViewModel(Context context){
         this.context = context;
-//        this.data = data;
         userRepository = new UserRepository();
     }
 
@@ -57,7 +56,7 @@ public class FrgProfileViewModel {
         dialogEditProfile.show();
     }
     public String checkGender(String gender){
-        if(gender == "1"){
+        if(gender.equals("1")){
             return "Male";
         }
         else {

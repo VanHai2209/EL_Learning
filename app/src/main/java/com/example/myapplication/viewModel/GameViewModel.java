@@ -1,7 +1,9 @@
 package com.example.myapplication.viewModel;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -19,6 +21,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.myapplication.R;
 import com.example.myapplication.data.api.ApiServiceClient;
 import com.example.myapplication.data.repository.UserRepository;
+import com.example.myapplication.dialog.DialogExit;
 import com.example.myapplication.model.ApiResponse;
 import com.example.myapplication.model.SelectWordModel;
 import com.example.myapplication.model.WordData;
@@ -212,5 +215,38 @@ public class GameViewModel extends ViewModel {
             }
         }
         return replacedWord.toString();
+    }
+    public String insertRandomWord(String word){
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] chars = word.toCharArray();
+        Random random = new Random();
+        for(int i = chars.length -1;i > 0; i --){
+            int j = random.nextInt(i+1);
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+        }
+        for (int i = 0; i < chars.length; i++) {
+            stringBuilder.append(chars[i]);
+            if (i < chars.length - 1) {
+                stringBuilder.append('/');
+            }
+        }
+        return  stringBuilder.toString();
+    }
+    public void dialogExit(Context context){
+        DialogExit dialogExit = new DialogExit(context, new DialogExit.DialogCallback() {
+            @Override
+            public void onCancelClicked() {
+
+            }
+
+            @Override
+            public void onExitClicked() {
+                ((Activity) context).finish();
+            }
+        });
+        dialogExit.setCanceledOnTouchOutside(false);
+        dialogExit.show();
     }
 }

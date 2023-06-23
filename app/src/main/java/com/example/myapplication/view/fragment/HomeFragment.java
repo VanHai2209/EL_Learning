@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -27,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
+    private OnFragmentInteractionListener mListener;
+    LinearLayout rank_layout, topic_layout, search_layout;
     HomeViewModel homeViewModel;
     String email, token_login;
     SharedPreferences sharedPreferences;
@@ -34,7 +38,7 @@ public class HomeFragment extends Fragment {
     private Handler slideHandler = new Handler();
     VideoView videoViewUsers, videoViewWords, videoViewTopics;
     boolean isVideoPlaying = false;
-    TextView txtUsername;
+    TextView txtUsername, txtRank;
     String videoPath_Users, videoPath_Topics, videoPath_Words;
 
     @Override
@@ -50,11 +54,40 @@ public class HomeFragment extends Fragment {
         homeViewModel.getData().observe(getViewLifecycleOwner(), new Observer<GetInforResponse>() {
             @Override
             public void onChanged(GetInforResponse getInforResponse) {
-                txtUsername.setText(getInforResponse.getDataUser().getUsername());
+                txtUsername.setText("Hi,"+getInforResponse.getDataUser().getUsername());
+                txtRank.setText("Your Rank: "+getInforResponse.getDataUser().getMyrank()+"/"+getInforResponse.getDataUser().getTotalUser());
             }
         });
         viewPager2 = view.findViewById(R.id.viewPager);
         txtUsername = view.findViewById(R.id.textView8);
+        txtRank = view.findViewById(R.id.textView10);
+        rank_layout = view.findViewById(R.id.rank_layout);
+        rank_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onClicked("Rank");
+                }
+            }
+        });
+        search_layout = view.findViewById(R.id.search_layout);
+        search_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onClicked("Dictionary");
+                }
+            }
+        });
+        topic_layout = view.findViewById(R.id.topic_layout);
+        topic_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onClicked("Topic");
+                }
+            }
+        });
 
         List<SlideItem> slideItems = new ArrayList<>();
         slideItems.add(new SlideItem(R.drawable.carousel1));
@@ -153,8 +186,20 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mListener = (OnFragmentInteractionListener) context;
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         slideHandler.postDelayed(slideRunnable, 3000);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 }

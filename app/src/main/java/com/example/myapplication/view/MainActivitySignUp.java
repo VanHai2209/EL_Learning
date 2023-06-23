@@ -3,6 +3,7 @@ package com.example.myapplication.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -48,7 +49,7 @@ public class MainActivitySignUp extends AppCompatActivity {
             public void onClick(View view) {
                 if(signUpViewModel.checkField(txtEmail.getText().toString(),txtPassword.getText().toString(),txtRePass.getText().toString(),txtUsername.getText().toString(),txtName.getText().toString(),txtAddress.getText().toString(),txtPhone.getText().toString(),stringGender)){
                     if(signUpViewModel.checkConfirmPass(txtPassword.getText().toString(),txtRePass.getText().toString())){
-                        stringBirthday = birthday.getDayOfMonth()+"-"+birthday.getMonth()+"-"+birthday.getYear();
+                        stringBirthday =birthday.getYear()+"-"+birthday.getMonth()+ "-"+birthday.getDayOfMonth();
                         signUpViewModel.register(txtEmail.getText().toString(),txtPassword.getText().toString(),txtUsername.getText().toString(),txtName.getText().toString(),txtAddress.getText().toString(),txtPhone.getText().toString(),stringGender, stringBirthday);
                     }
                     else {

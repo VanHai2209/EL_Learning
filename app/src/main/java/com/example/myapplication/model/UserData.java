@@ -51,8 +51,10 @@ public class UserData implements Parcelable {
     private String telephone;
     private String gender;
     private String birthday;
+    private int myrank;
+    private int totalUser;
 
-    public UserData(String username, String name, String email, String gender, String birthday, String address, String telephone) {
+    public UserData(String username, String name, String email, String gender, String birthday, String address, String telephone, int myrank, int totalUser) {
         this.email = email;
         this.username = username;
         this.name = name;
@@ -60,6 +62,8 @@ public class UserData implements Parcelable {
         this.telephone = telephone;
         this.gender = gender;
         this.birthday = birthday;
+        this.myrank = myrank;
+        this.totalUser = totalUser;
     }
 
     public String getEmail() {
@@ -116,5 +120,21 @@ public class UserData implements Parcelable {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public int getMyrank() {
+        return myrank;
+    }
+
+    public void setMyrank(int myrank) {
+        this.myrank = myrank;
+    }
+
+    public int getTotalUser() {
+        return totalUser;
+    }
+
+    public void setTotalUser(int totalUser) {
+        this.totalUser = totalUser;
     }
 }

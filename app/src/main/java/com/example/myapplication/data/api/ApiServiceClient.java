@@ -1,7 +1,5 @@
 package com.example.myapplication.data.api;
 
-import android.util.Log;
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -32,7 +30,7 @@ public class ApiServiceClient {
                 }).build();
                 Retrofit retrofit = new Retrofit.Builder()
                         .client(client)
-                        .baseUrl("http://192.168.21.104:8080/")
+                        .baseUrl("http://192.168.21.109:8080/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 

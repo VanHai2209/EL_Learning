@@ -10,29 +10,29 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.apdapter.AdapterPagerSearch;
 import com.example.myapplication.model.WordData;
-import com.example.myapplication.viewModel.AddWordViewModel;
-import com.example.myapplication.viewModel.FrgSearchViewModel;
-import com.example.myapplication.viewModel.GrammarViewModel;
+import com.example.myapplication.viewModel.WordViewModel;
 
 public class SearchActivity2 extends AppCompatActivity {
-    AppCompatButton btnAddWord, btnBack;
+    private boolean isFirstCheck = true ;
+    AppCompatButton btnBack;
+    CheckBox checkBoxWordPerson;
     String token_login, idPerson;
     SharedPreferences sharedPreferences;
     TextView txtWord;
     ViewPager2 viewPager2;
     RadioGroup radioGroup;
-
-
+    WordViewModel wordViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,24 +41,47 @@ public class SearchActivity2 extends AppCompatActivity {
         token_login = sharedPreferences.getString("Token_Login",null);
         idPerson = sharedPreferences.getString("IdPerson", null);
         WordData wordData = getIntent().getParcelableExtra("wordData");
-        btnAddWord = findViewById(R.id.btnAddWord);
+        wordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+        wordViewModel.setContext(this);
+        checkBoxWordPerson = findViewById(R.id.checkboxWord);
         btnBack = findViewById(R.id.btnBack);
         txtWord = findViewById(R.id.txtWord);
         txtWord.setText(wordData.getEn());
         viewPager2 = findViewById(R.id.viewPagerSearch);
         radioGroup = findViewById(R.id.radioGroup_search);
         radioGroup.check(R.id.radio_vi);
+        wordViewModel.checkExistPersonWord(idPerson, wordData.getId(), token_login);
+        wordViewModel.geData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s.equals("Word exist")){
+                    checkBoxWordPerson.setChecked(true);
+                }
+                else {
+                    isFirstCheck = false;
+                }
+            }
+        });
+        checkBoxWordPerson.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (isFirstCheck){
+                    isFirstCheck = false;
+                    return;
+                }
+                if(b){
+                    wordViewModel.addWordPerson(idPerson, wordData.getId(), token_login);
+                }
+                else{
+                    Toast.makeText(SearchActivity2.this, "Delete Person Word Successfully", Toast.LENGTH_SHORT).show();
+//                    wordViewModel.deletePersonWord(idPerson, wordData.getId(), token_login);
+                }
+            }
+        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-            }
-        });
-        btnAddWord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddWordViewModel addWordViewModel = new AddWordViewModel(SearchActivity2.this);
-                addWordViewModel.addWordPerson(idPerson, wordData.getId());
             }
         });
         viewPager2.setAdapter(new AdapterPagerSearch(wordData, token_login, (ViewModelStoreOwner) this,(LifecycleOwner) this));

@@ -9,7 +9,7 @@
     android:background="@drawable/bgr_rank">
    <LinearLayout
        android:gravity="center"
-       android:padding="10dp"
+       android:padding="32dp"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal">
