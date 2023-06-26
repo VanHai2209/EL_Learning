@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.TopicView"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bgr_topic">
     <LinearLayout
         android:padding="5dp"
         android:background="@drawable/gradient_toolbar"

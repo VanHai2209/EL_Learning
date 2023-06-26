@@ -18,10 +18,13 @@
         android:layout_height="wrap_content"
         android:text="Question" />
     <RadioGroup
+        android:layout_marginTop="100dp"
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
+            android:backgroundTint="#7C87C4"
+            android:id="@+id/keyA"
             android:textColor="@color/black"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -31,6 +34,8 @@
             android:text="Answer 1" />
 
         <RadioButton
+            android:backgroundTint="#7C87C4"
+            android:id="@+id/keyB"
             android:textColor="@color/black"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -40,6 +45,8 @@
             android:text="Answer 2" />
 
         <RadioButton
+            android:backgroundTint="#7C87C4"
+            android:id="@+id/keyC"
             android:textColor="@color/black"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -49,6 +56,8 @@
             android:text="Answer 3" />
 
         <RadioButton
+            android:backgroundTint="#7C87C4"
+            android:id="@+id/keyD"
             android:textColor="@color/black"
             android:layout_width="300dp"
             android:layout_height="wrap_content"

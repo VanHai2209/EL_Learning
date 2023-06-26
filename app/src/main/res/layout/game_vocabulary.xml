@@ -40,53 +40,63 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_select_word"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_choose"
-        android:backgroundTint="@color/black"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_blue_border"
+        android:backgroundTint="#FFD6B5"
+        android:drawableStart="@drawable/gamepad"
+        android:text="Select"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintHorizontal_bias="0.209"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_arrange_word"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_choose"
-        android:backgroundTint="@color/black"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_blue_border"
+        android:backgroundTint="#5CE1E6"
+        android:drawableStart="@drawable/gamepad"
+        android:text="Arrange"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_complete_word"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_choose"
-        android:backgroundTint="@color/black"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_blue_border"
+        android:backgroundTint="#FAB5B5"
+        android:drawableStart="@drawable/gamepad"
+        android:text="Complet"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_sovle_word"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_choose"
-        android:backgroundTint="@color/black"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_blue_border"
+        android:backgroundTint="#D9D9D9"
+        android:drawableStart="@drawable/gamepad"
+        android:text="Sovle"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.996" />
+        app:layout_constraintVertical_bias="0.943" />
 </androidx.constraintlayout.widget.ConstraintLayout>

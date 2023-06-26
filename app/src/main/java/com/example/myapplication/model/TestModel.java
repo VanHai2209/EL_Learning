@@ -1,6 +1,45 @@
 package com.example.myapplication.model;
 
-public class TestModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class TestModel implements Parcelable {
+    protected TestModel(Parcel in){
+        name = in.readString();
+        keyA = in.readString();
+        keyB = in.readString();
+        keyC = in.readString();
+        keyD = in.readString();
+        keyCorrect = in.readString();
+    }
+    public static final Creator<TestModel> CREATOR = new Creator<TestModel>() {
+        @Override
+        public TestModel createFromParcel(Parcel parcel) {
+            return new TestModel(parcel);
+        }
+
+        @Override
+        public TestModel[] newArray(int i) {
+            return new TestModel[i];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(keyA);
+        parcel.writeString(keyB);
+        parcel.writeString(keyC);
+        parcel.writeString(keyD);
+        parcel.writeString(keyCorrect);
+    }
+
     String name;
     String keyA;
     String keyB;

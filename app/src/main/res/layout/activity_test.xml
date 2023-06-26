@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="120dp"
+            android:layout_marginStart="130dp"
             android:fontFamily="@font/font_text_home"
             android:text="Test"
             android:textColor="@color/white"
@@ -45,13 +45,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_blue_border"
         android:orientation="vertical"
-        android:padding="12dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1">
+        app:layout_constraintVertical_bias="0.099">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,6 +94,28 @@
                 android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
+    <ImageView
+        android:id="@+id/imageIncorrect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/unhappy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
+    <ImageView
+        android:id="@+id/imageCorrect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/happy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
 
     <FrameLayout
         android:id="@+id/question_container"
@@ -104,7 +126,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout14"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:textSize="25dp"
