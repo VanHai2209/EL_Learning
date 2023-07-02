@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.GameSovleitout"
-    android:background="@drawable/bgr_game_complete">
+    android:background="@drawable/bgr_game_solveitout">
 
     <LinearLayout
         android:id="@+id/linearLayout12"
@@ -96,10 +96,11 @@
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105">
+        app:layout_constraintVertical_bias="0.096">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,32 +128,35 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_gravity="center"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Heart:"
                 android:textColor="@color/black" />
+
             <ImageView
-                android:layout_gravity="center"
                 android:id="@+id/heart1"
-                android:src="@drawable/heart"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="10dp" />
-            <ImageView
                 android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
+
+            <ImageView
                 android:id="@+id/heart2"
-                android:src="@drawable/heart"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="10dp" />
-            <ImageView
                 android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
+
+            <ImageView
                 android:id="@+id/heart3"
-                android:src="@drawable/heart"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="10dp" />
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
         </LinearLayout>
 
         <LinearLayout
@@ -205,7 +209,7 @@
         app:layout_constraintVertical_bias="0.396">
 
         <Button
-            android:text="submit"
+            android:text="Submit"
             android:backgroundTint="#F44336"
             android:id="@+id/btnSubmit"
             android:layout_width="100dp"

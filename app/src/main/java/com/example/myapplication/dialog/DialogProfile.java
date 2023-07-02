@@ -31,7 +31,7 @@ public class DialogProfile extends Dialog {
         TextView txtUsername = findViewById(R.id.txtName);
         txtUsername.setText(rankModel.getUsername());
         TextView txtEmail = findViewById(R.id.txtEmail);
-        txtEmail.setText(rankModel.getEmail());
+        txtEmail.setText(maskingData(rankModel.getEmail()));
         TextView txtRank = findViewById(R.id.txtRank);
         txtRank.setText(rankModel.getMyrank());
         TextView txtScore = findViewById(R.id.txtScore);
@@ -44,5 +44,15 @@ public class DialogProfile extends Dialog {
                 dismiss();
             }
         });
+    }
+    public String maskingData(String email ){
+        int atIndex = email.indexOf("@");
+        if (atIndex > 1) {
+            String firstCharacter = email.substring(0, 1);
+            String maskedEmail = firstCharacter + "*****" + email.substring(atIndex);
+            return maskedEmail;
+        } else {
+            return email;
+        }
     }
 }

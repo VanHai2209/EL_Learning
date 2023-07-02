@@ -100,6 +100,8 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
+        android:textColorHint="#8289B1"
+        android:textColor="@color/black"
         android:gravity="center"
         android:id="@+id/txtEmail_fg"
         android:background="@drawable/edittext_background"

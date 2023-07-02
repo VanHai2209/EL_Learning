@@ -95,51 +95,55 @@ public class GameArrangeWord extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(count<7){
-                    count ++;
-                    if(answer.getText().toString().equals(keyWord) ){
-                        gameViewModel.setAnimation(imgCorrect, getApplicationContext());
-                        countScore = countScore + 15;
-                        score.setText(""+countScore);
-                        changeQuestion();
-                    }
-                    else {
-                        countHeart --;
-                        if(countHeart > -1 ){
-                            gameViewModel.setAnimation(imgInCorrect, getApplicationContext());
-                            if(countHeart == 0){
-                                AlertDialog.Builder builder = new AlertDialog.Builder(GameArrangeWord.this);
-                                builder.setTitle("Warning");
-                                builder.setMessage("Out of your hearts");
-
-                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                        dialog.dismiss();
-                                    }
-                                });
-
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
-
-                            }
-                            listHeart.get(countHeart).setVisibility(View.INVISIBLE);
+                if(answer.getText().toString().equals("")){
+                    Toast.makeText(GameArrangeWord.this, "Please fill in the answer", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if(count<7){
+                        count ++;
+                        if(answer.getText().toString().equals(keyWord) ){
+                            gameViewModel.setAnimation(imgCorrect, getApplicationContext());
+                            countScore = countScore + 15;
+                            score.setText(""+countScore);
                             changeQuestion();
                         }
                         else {
-                            openDialog();
-                        }
+                            countHeart --;
+                            if(countHeart > -1 ){
+                                gameViewModel.setAnimation(imgInCorrect, getApplicationContext());
+                                if(countHeart == 0){
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(GameArrangeWord.this);
+                                    builder.setTitle("Warning");
+                                    builder.setMessage("Out of your hearts");
 
+                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            dialog.dismiss();
+                                        }
+                                    });
+
+                                    AlertDialog dialog = builder.create();
+                                    dialog.show();
+
+                                }
+                                listHeart.get(countHeart).setVisibility(View.INVISIBLE);
+                                changeQuestion();
+                            }
+                            else {
+                                openDialog();
+                            }
+
+                        }
                     }
-                }
-                else {
-                    if(answer.getText().toString().equals(keyWord) ){
-                        countScore = countScore + 15;
-                        score.setText(""+countScore);
+                    else {
+                        if(answer.getText().toString().equals(keyWord) ){
+                            countScore = countScore + 15;
+                            score.setText(""+countScore);
+                        }
+                        openDialog();
                     }
-                    openDialog();
                 }
             }
         });

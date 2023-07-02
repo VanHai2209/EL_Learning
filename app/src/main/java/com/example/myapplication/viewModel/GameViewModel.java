@@ -105,8 +105,10 @@ public class GameViewModel extends ViewModel {
     public void setDisableAndSuccess(View view){
         String randColor = getRandomColor();
         preView.setOnClickListener(null);
+
         preView.setBackgroundColor(Color.parseColor(randColor));
         view.setOnClickListener(null);
+
         view.setBackgroundColor(Color.parseColor(randColor));
     }
     public void handleChangeColor(View view){

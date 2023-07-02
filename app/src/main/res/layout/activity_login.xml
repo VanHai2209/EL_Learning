@@ -53,6 +53,8 @@
             android:textStyle="bold" />
 
         <EditText
+            android:textColorHint="#8289B1"
+            android:textColor="@color/black"
             android:id="@+id/txtGmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -84,7 +86,10 @@
             android:hint="Your Password"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textColorHint="#8289B1"
+            android:textColor="@color/black"
             android:textSize="18dp" />
+
         <LinearLayout
             android:padding="10dp"
             android:orientation="horizontal"

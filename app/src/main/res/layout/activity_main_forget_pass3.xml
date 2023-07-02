@@ -77,6 +77,8 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:textColorHint="#8289B1"
+            android:textColor="@color/black"
             android:id="@+id/updatePass"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -88,6 +90,8 @@
             android:hint="New Password" />
 
         <EditText
+            android:textColorHint="#8289B1"
+            android:textColor="@color/black"
             android:layout_gravity="center"
             android:id="@+id/updatePassConfirm"
             android:gravity="center"

@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dialog.DialogGame;
@@ -138,8 +139,14 @@ public class GameCompleteWord extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String key = answer.getText().toString();
-                char keyChar = key.charAt(0);
-                gameViewModel.onClickComplete(keyChar);
+                char keyChar;
+                if(key.equals("")){
+                    Toast.makeText(GameCompleteWord.this, "Please fill in the answer", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    keyChar = key.charAt(0);
+                    gameViewModel.onClickComplete(keyChar);
+                }
             }
         });
     }

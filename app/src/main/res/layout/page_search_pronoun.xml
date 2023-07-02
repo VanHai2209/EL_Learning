@@ -16,6 +16,7 @@
         android:padding="10dp"
         android:orientation="horizontal">
         <TextView
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:id="@+id/txtIPA"
             android:textStyle="italic"

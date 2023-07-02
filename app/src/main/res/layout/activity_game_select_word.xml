@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.GameSelectWord"
     android:gravity="center"
-    android:background="@drawable/bgr_game_complete">
+    android:background="@drawable/bgr_game_selectword">
 
     <LinearLayout
         android:background="@drawable/gradient_toolbar"
@@ -68,14 +68,15 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_blue_border"
+        android:backgroundTint="#D5C5C5"
         android:orientation="vertical"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/grid_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541">
+        app:layout_constraintVertical_bias="0.101">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,32 +105,35 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_gravity="center"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Heart:"
                 android:textColor="@color/black" />
+
             <ImageView
-                android:layout_gravity="center"
                 android:id="@+id/heart1"
-                android:src="@drawable/heart"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="10dp" />
-            <ImageView
                 android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
+
+            <ImageView
                 android:id="@+id/heart2"
-                android:src="@drawable/heart"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="10dp" />
-            <ImageView
                 android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
+
+            <ImageView
                 android:id="@+id/heart3"
-                android:src="@drawable/heart"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="10dp" />
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/heart" />
         </LinearLayout>
 
         <LinearLayout
@@ -156,18 +160,17 @@
 
     <GridLayout
         android:id="@+id/grid_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#A39A9A"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
         android:columnCount="4"
         android:padding="10dp"
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598">
+        app:layout_constraintVertical_bias="0.549">
 
         <TextView
             android:layout_width="80dp"

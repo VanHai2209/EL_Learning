@@ -29,15 +29,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <ImageView
+            <com.jsibbold.zoomage.ZoomageView
                 android:id="@+id/imageGrammar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY" />
+                android:scaleType="fitCenter" />
 
         </LinearLayout>
 

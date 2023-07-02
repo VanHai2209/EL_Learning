@@ -71,6 +71,8 @@
                     android:hint="Example@gmail.com"
                     android:inputType="textPersonName"
                     android:padding="10dp"
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:textSize="18dp" />
 
                 <TextView
@@ -84,6 +86,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:id="@+id/txtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -105,6 +109,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:id="@+id/txtRepsswd"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -126,6 +132,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -147,6 +155,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:id="@+id/txtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -167,6 +177,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:id="@+id/txtAddress"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -187,6 +199,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:textColorHint="#8289B1"
+                    android:textColor="@color/black"
                     android:id="@+id/txtPhone"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -214,6 +228,7 @@
                     <RadioButton
                         android:id="@+id/radio_male"
                         android:text="Male"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -221,6 +236,7 @@
                         android:id="@+id/radio_female"
                         android:layout_marginStart="30dp"
                         android:text="FeMale"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -234,6 +250,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
                 <DatePicker
+                    android:calendarTextColor="@color/black"
                     android:id="@+id/date_picker_birthday"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"

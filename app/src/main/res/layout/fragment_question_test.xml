@@ -8,8 +8,9 @@
     android:gravity="center"
     android:padding="16dp">
     <TextView
+        android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:backgroundTint="#D9CECE"
         android:background="@drawable/button_blue_border"
         android:padding="8dp"
@@ -23,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
-            android:backgroundTint="#7C87C4"
+            android:backgroundTint="#D9CECE"
             android:id="@+id/keyA"
             android:textColor="@color/black"
             android:layout_width="300dp"
@@ -34,7 +35,7 @@
             android:text="Answer 1" />
 
         <RadioButton
-            android:backgroundTint="#7C87C4"
+            android:backgroundTint="#D9CECE"
             android:id="@+id/keyB"
             android:textColor="@color/black"
             android:layout_width="300dp"
@@ -45,7 +46,7 @@
             android:text="Answer 2" />
 
         <RadioButton
-            android:backgroundTint="#7C87C4"
+            android:backgroundTint="#D9CECE"
             android:id="@+id/keyC"
             android:textColor="@color/black"
             android:layout_width="300dp"
@@ -56,7 +57,7 @@
             android:text="Answer 3" />
 
         <RadioButton
-            android:backgroundTint="#7C87C4"
+            android:backgroundTint="#D9CECE"
             android:id="@+id/keyD"
             android:textColor="@color/black"
             android:layout_width="300dp"

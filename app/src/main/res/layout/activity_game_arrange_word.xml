@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.GameArrangeWord"
-    android:background="@drawable/bgr_game_complete">
+    android:background="@drawable/bgr_game_arrange">
 
     <LinearLayout
         android:id="@+id/linearLayout13"
@@ -54,19 +54,18 @@
         app:layout_constraintVertical_bias="0.859" />
 
     <TextView
-        android:textColor="@color/black"
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="H/O/L/E/L"
+        android:textColor="@color/black"
         android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.489" />
 
     <EditText
         android:textColor="@color/black"
@@ -85,7 +84,7 @@
 
     <Button
         android:id="@+id/btnSubmit"
-        android:backgroundTint="#CFB2D5"
+        android:backgroundTint="#E91E63"
         android:background="@drawable/button_blue_border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,6 +114,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_blue_border"
+        android:backgroundTint="#D6C7B1"
         android:orientation="vertical"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +122,7 @@
         app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105">
+        app:layout_constraintVertical_bias="0.157">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -205,16 +205,17 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/nextQuestion"
+        android:id="@+id/imageIncorrect"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/next_question"
+        android:src="@drawable/unhappy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout13"
         app:layout_constraintVertical_bias="0.167" />
+
     <ImageView
         android:id="@+id/imageCorrect"
         android:layout_width="100dp"
@@ -226,11 +227,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout13"
         app:layout_constraintVertical_bias="0.167" />
+
     <ImageView
-        android:id="@+id/imageIncorrect"
+        android:id="@+id/nextQuestion"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/unhappy"
+        android:src="@drawable/next_question"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.903"
