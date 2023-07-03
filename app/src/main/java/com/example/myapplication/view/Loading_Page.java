@@ -9,7 +9,6 @@ import android.os.Handler;
 import com.example.myapplication.R;
 
 public class Loading_Page extends AppCompatActivity {
-    Handler handler;
     private Intent intent;
 
     @Override

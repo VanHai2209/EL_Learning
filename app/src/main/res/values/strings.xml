@@ -2,4 +2,9 @@
     <string name="app_name">My Application</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chanel_name">chanel morning</string>
+    <string name="chanel_de">chanel morning 1</string>
+    <string name="chanel_name1">chanel tonight</string>
+    <string name="chanel_de1">chanel tonight 1</string>
+
 </resources>

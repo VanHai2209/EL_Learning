@@ -1,13 +1,16 @@
 package com.example.myapplication.viewModel;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myapplication.data.api.ApiServiceClient;
+import com.example.myapplication.view.GameArrangeWord;
 import com.example.myapplication.view.PinviewActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.data.repository.UserRepository;
@@ -33,7 +36,20 @@ public class RegisterViewModel extends ViewModel {
             }
             @Override
             public void onFail(RegisterResponse registerResponse){
-                Toast.makeText(context,registerResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,, Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(registerResponse.getErrMessage());
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
