@@ -1,11 +1,8 @@
 package com.example.myapplication.view.fragment;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +81,7 @@ public class MyListFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 frgMyListViewModel.getData().observe(getViewLifecycleOwner(), new Observer<SearchWordResponse>() {
                     @Override
                     public void onChanged(SearchWordResponse searchWordResponse) {

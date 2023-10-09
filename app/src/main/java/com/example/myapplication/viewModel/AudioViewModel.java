@@ -41,8 +41,6 @@ public class AudioViewModel extends ViewModel {
                     MediaPlayer mediaPlayer = new MediaPlayer();
                     mediaPlayer.setDataSource(tempFile.getAbsolutePath());
                     mediaPlayer.prepare();
-
-                    // Gán dữ liệu vào MutableLiveData thông qua setValue
                     data.setValue(mediaPlayer);
                 } catch (IOException e) {
                     // Xử lý lỗi khi xử lý dữ liệu audio

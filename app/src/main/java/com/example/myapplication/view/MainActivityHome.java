@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.dialog.DialogLogout;
 import com.example.myapplication.model.GetInforResponse;
+import com.example.myapplication.view.fragment.FlashCardFragment;
 import com.example.myapplication.view.fragment.GameFragment;
 import com.example.myapplication.view.fragment.HomeFragment;
 import com.example.myapplication.view.fragment.MyListFragment;
@@ -150,6 +151,14 @@ public class MainActivityHome extends AppCompatActivity implements OnFragmentInt
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     MyListFragment myListFragment = MyListFragment.newInstance(token_login, idPerson);
                     fragmentTransaction.replace(R.id.fragment_container, myListFragment);
+                    fragmentTransaction.commit();
+                }
+                else if (itemId == R.id.nav_flashcard) {
+                    home_toolbar.setTitle("Flash Card");
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    FlashCardFragment flashCardFragment = FlashCardFragment.newInstance(token_login, idPerson);
+                    fragmentTransaction.replace(R.id.fragment_container, flashCardFragment);
                     fragmentTransaction.commit();
                 }
                 else{

@@ -25,6 +25,7 @@
             android:src="@drawable/congratulations"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="horizontal"

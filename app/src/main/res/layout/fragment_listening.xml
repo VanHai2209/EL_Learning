@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:backgroundTint="@color/white"
+    android:background="@drawable/button_blue_border">
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/teacher"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAudio"
+            android:layout_gravity="center"
+            android:layout_marginStart="50dp"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:background="@drawable/speaker"/>
+    </LinearLayout>
+    <EditText
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:hint="Answer Here"
+        android:id="@+id/txtAnswer"
+        android:textColorHint="@color/ic_app_background"/>
+</LinearLayout>

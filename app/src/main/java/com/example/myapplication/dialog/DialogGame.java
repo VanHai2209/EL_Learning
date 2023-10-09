@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
@@ -17,6 +18,10 @@ public class DialogGame extends Dialog {
         this.callback = callback;
         this.score = score;
     }
+    public DialogGame(Context context, DialogCallback dialogCallback){
+        super(context);
+        this.callback = dialogCallback;
+    }
     public interface DialogCallback{
         public void onSaveClicked();
         public void onRePlayClicked();
@@ -27,7 +32,13 @@ public class DialogGame extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_game);
         TextView txtScore = findViewById(R.id.txtScore);
-        txtScore.setText(score);
+        if (score == null){
+            LinearLayout linearLayout = findViewById(R.id.linearLayout);
+            linearLayout.setVisibility(View.GONE);
+        }
+        else {
+            txtScore.setText(score);
+        }
         Button btnSave = findViewById(R.id.saveScore);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override

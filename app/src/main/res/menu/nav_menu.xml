@@ -22,6 +22,9 @@
         <item android:id="@+id/nav_game"
             android:title="Game"
             android:icon="@drawable/nav_game"/>
+        <item android:id="@+id/nav_flashcard"
+            android:title="Flash Card"
+            android:icon="@drawable/nav_flashcard"/>
         <item android:id="@+id/nav_profile"
             android:title="Profile"
             android:icon="@drawable/nav_profile"/>

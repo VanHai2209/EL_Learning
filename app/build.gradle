@@ -47,7 +47,6 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     // Rounded image view
     implementation 'com.makeramen:roundedimageview:2.3.0'
-
     def lifecycle_version = "1.1.1"
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"

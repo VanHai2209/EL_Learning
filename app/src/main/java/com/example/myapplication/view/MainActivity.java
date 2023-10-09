@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 20); // Thiết lập giờ kích hoạt
-        calendar.set(Calendar.MINUTE, 52); // Thiết lập phút kích hoạt
+        calendar.set(Calendar.HOUR_OF_DAY, 8); // Thiết lập giờ kích hoạt
+        calendar.set(Calendar.MINUTE, 25); // Thiết lập phút kích hoạt
         calendar.set(Calendar.SECOND,0);
         calendar.set(Calendar.MILLISECOND,0);
         notification11.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),

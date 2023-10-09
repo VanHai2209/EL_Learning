@@ -80,6 +80,10 @@ public interface ApiService {
     Call<ResponseBody> getAudio(@Path("audioName") String audioName);
     @GET("api/list-topic")
     Call<TopicResponse> listTopic();
+    @GET("api/listTopicUser")
+    Call<TopicResponse> listTopicUser(
+
+    );
     @GET("api/list-topic")
     Call<SearchWordResponse> searchWordTopic(
             @Query("topic") String topic);

@@ -83,7 +83,6 @@ public class AdapterPagerSearch extends RecyclerView.Adapter<MyViewHolder> {
 
 }
 class MyViewHolder extends RecyclerView.ViewHolder {
-    MediaPlayer mediaPlayer;
     private LifecycleOwner lifecycleOwner;
     private ViewModelStoreOwner viewModelStoreOwner;
     TextView txtVi;
