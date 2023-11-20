@@ -67,10 +67,10 @@ public class Listening extends AppCompatActivity implements TextAnswerListener {
                 for(WordData wordData : searchWordResponse.getListWord()){
                     list.add(new WordData(wordData.getId(), wordData.getEn(), wordData.getVn(), wordData.getType(), wordData.getIPA(), wordData.getExample(), wordData.getImage(), wordData.getAudio(), wordData.getIdTopic()));
                 }
-
+                Collections.shuffle(list, new Random());
             }
         });
-        Collections.shuffle(list, new Random());
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

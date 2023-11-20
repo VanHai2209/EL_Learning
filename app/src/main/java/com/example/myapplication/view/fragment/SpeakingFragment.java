@@ -107,21 +107,17 @@ public class SpeakingFragment extends Fragment {
         return view;
     }
     private void startSpeechToText() {
-        // Tạo intent cho RecognizerIntent để kích hoạt chuyển đổi giọng nói thành văn bản
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en");
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
         try {
-            // Start chuyển đổi giọng nói thành văn bản bằng cách gọi startActivityForResult
             startActivityForResult(intent, SPEECH_REQUEST_CODE);
         } catch (ActivityNotFoundException e) {
-            // Xử lý trường hợp không tìm thấy dịch vụ chuyển đổi giọng nói thành văn bản
             Toast.makeText(getActivity(), "Chuyển đổi giọng nói thành văn bản không khả dụng.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Xử lý kết quả sau khi chuyển đổi giọng nói thành văn bản
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

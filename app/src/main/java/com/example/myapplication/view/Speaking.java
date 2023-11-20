@@ -28,6 +28,7 @@ import com.example.myapplication.viewModel.GameViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class Speaking extends AppCompatActivity implements TextAnswerListener {
@@ -39,7 +40,7 @@ public class Speaking extends AppCompatActivity implements TextAnswerListener {
     GameViewModel gameViewModel;
     private String token_login, idPerson;
     SharedPreferences sharedPreferences;
-    ArrayList<WordData> list = new ArrayList<>();
+    List<WordData> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +60,10 @@ public class Speaking extends AppCompatActivity implements TextAnswerListener {
                 for(WordData wordData : searchWordResponse.getListWord()){
                     list.add(new WordData(wordData.getId(), wordData.getEn(), wordData.getVn(), wordData.getType(), wordData.getIPA(), wordData.getExample(), wordData.getImage(), wordData.getAudio(), wordData.getIdTopic()));
                 }
-
+                Collections.shuffle(list);
             }
         });
-        Collections.shuffle(list, new Random());
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -148,6 +149,6 @@ public class Speaking extends AppCompatActivity implements TextAnswerListener {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
     }
 }
